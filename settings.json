@@ -79,5 +79,7 @@
             "package": "workflow",
             "url": "urls"
         }
-    ]
+    ],
+    "app_name":"Propath_Academy",
+    "zango_version":">=0.3.0"
 }
