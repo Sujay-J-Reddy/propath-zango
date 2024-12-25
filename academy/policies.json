@@ -1,0 +1,157 @@
+{
+    "policies": [
+        {
+            "name": "CompetitionViewAccess",
+            "description": "Competition policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "academy.views.CompetitionCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Franchisee",
+                "Admin"
+            ]
+        },
+        {
+            "name": "CompetitionResultViewAccess",
+            "description": "Competition Result policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "academy.views.CompetitionResultCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Franchisee",
+                "Admin"
+            ]
+        },
+        {
+            "name": "CompetitionRegistrationsViewAccess",
+            "description": "Competition Registrations policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "academy.views.CompetitionStudentCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Franchisee",
+                "Admin"
+            ]
+        },
+        {
+            "name": "SchoolViewAccess",
+            "description": "School policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "academy.views.SchoolCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "SchoolStudentViewAccess",
+            "description": "School  Students policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "academy.views.SchoolStudentCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "EnquiryDataViewAccess",
+            "description": "Enquiry Data policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "academy.views.EnquiryDataView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "EventViewAccess",
+            "description": "Event policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "academy.views.EventCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "BirthdayAccess",
+            "description": "Birthday policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "academy.views.check_birthdays",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "StatView",
+            "description": "Stats on website",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "academy.views.StatCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "TestimonialView",
+            "description": "Testimonials on website",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "academy.views.TestimonialCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        }
+    ]
+}

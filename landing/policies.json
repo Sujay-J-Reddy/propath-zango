@@ -1,0 +1,163 @@
+{
+    "policies": [
+        {
+            "name": "LandingPageViewAccess",
+            "description": "Landing policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "landing.views.LandingView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "AnonymousUsers"
+            ]
+        },
+        {
+            "name": "CourseViewAccess",
+            "description": "Courses policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "landing.views.CoursesView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "AnonymousUsers"
+            ]
+        },
+        {
+            "name": "EnquiryViewAccess",
+            "description": "Enquiry policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "landing.views.EnquiryView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "AnonymousUsers"
+            ]
+        },
+        {
+            "name": "AboutUsViewAccess",
+            "description": "About Us policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "landing.views.AboutUsView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "AnonymousUsers"
+            ]
+        },
+        {
+            "name": "AbacusViewAccess",
+            "description": "Abacus policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "landing.views.AbacusView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "AnonymousUsers",
+                "Franchisee",
+                "Teacher",
+                "Admin"
+            ]
+        },
+        {
+            "name": "AbacusCourseViewAccess",
+            "description": "Abacus Course policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "landing.views.AbacusCourseView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Franchisee",
+                "Teacher",
+                "Admin"
+            ]
+        },
+        {
+            "name": "VedicMathsViewAccess",
+            "description": "Vedic Maths policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "landing.views.VedicMathsView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Franchisee",
+                "Teacher",
+                "Admin"
+            ]
+        },
+        {
+            "name": "VedicCourseViewAccess",
+            "description": "Vedic Course policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "landing.views.VedicCourseView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "AnonymousUsers",
+                "Admin"
+            ]
+        },
+        {
+            "name": "HandwritingCourseViewAccess",
+            "description": "Handwriting policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "landing.views.HandwritingCourseView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "HandwritingViewAccess",
+            "description": "Handwriting Course policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "landing.views.HandwritingView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "AnonymousUsers",
+                "Admin"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,363 @@
+[
+{
+    "model": "appauth.userrolemodel",
+    "pk": 1,
+    "fields": {
+        "created_at": "2024-11-29T07:16:31.763Z",
+        "created_by": "",
+        "modified_at": "2024-11-29T07:16:33.496Z",
+        "modified_by": "",
+        "name": "AnonymousUsers",
+        "config": null,
+        "is_active": true,
+        "is_default": true,
+        "policies": [
+            [
+                "AllowFromAnywhere",
+                null
+            ],
+            [
+                "LoginViewAccess",
+                "packages.login.appauth"
+            ],
+            [
+                "FrameRouterViewAccess",
+                "packages.frame.router"
+            ],
+            [
+                "LandingPageViewAccess",
+                "landing"
+            ],
+            [
+                "CourseViewAccess",
+                "landing"
+            ],
+            [
+                "EnquiryViewAccess",
+                "landing"
+            ],
+            [
+                "AboutUsViewAccess",
+                "landing"
+            ],
+            [
+                "AbacusViewAccess",
+                "landing"
+            ],
+            [
+                "VedicCourseViewAccess",
+                "landing"
+            ],
+            [
+                "HandwritingViewAccess",
+                "landing"
+            ],
+            [
+                "NotificationCrudViewAccess",
+                "notifications"
+            ],
+            [
+                "TeacherViewAccess",
+                "teacher"
+            ]
+        ],
+        "policy_groups": []
+    }
+},
+{
+    "model": "appauth.userrolemodel",
+    "pk": 2,
+    "fields": {
+        "created_at": "2024-11-29T07:16:31.764Z",
+        "created_by": "",
+        "modified_at": "2024-11-29T07:16:31.764Z",
+        "modified_by": "",
+        "name": "SystemUsers",
+        "config": null,
+        "is_active": true,
+        "is_default": true,
+        "policies": [
+            [
+                "AllowFromAnywhere",
+                null
+            ]
+        ],
+        "policy_groups": []
+    }
+},
+{
+    "model": "appauth.userrolemodel",
+    "pk": 3,
+    "fields": {
+        "created_at": "2024-05-18T16:54:38.912Z",
+        "created_by": "",
+        "modified_at": "2024-12-03T12:14:00.264Z",
+        "modified_by": "",
+        "name": "Admin",
+        "config": null,
+        "is_active": true,
+        "is_default": false,
+        "policies": [
+            [
+                "AllowFromAnywhere",
+                null
+            ],
+            [
+                "FranchiseeViewAccess",
+                "franchise"
+            ],
+            [
+                "StudentViewAccess",
+                "franchise"
+            ],
+            [
+                "LevelCertificateViewAccess",
+                "franchise"
+            ],
+            [
+                "FrameDownloadsViewAccess",
+                "packages.frame.downloads"
+            ],
+            [
+                "FrameRouterViewAccess",
+                "packages.frame.router"
+            ],
+            [
+                "InstrcutorFeedbackViewAccess",
+                "teacher"
+            ],
+            [
+                "AbacusViewAccess",
+                "landing"
+            ],
+            [
+                "AbacusCourseViewAccess",
+                "landing"
+            ],
+            [
+                "VedicMathsViewAccess",
+                "landing"
+            ],
+            [
+                "VedicCourseViewAccess",
+                "landing"
+            ],
+            [
+                "HandwritingCourseViewAccess",
+                "landing"
+            ],
+            [
+                "HandwritingViewAccess",
+                "landing"
+            ],
+            [
+                "NotificationCrudViewAccess",
+                "notifications"
+            ],
+            [
+                "TeacherViewAccess",
+                "teacher"
+            ],
+            [
+                "SchoolViewAccess",
+                "academy"
+            ],
+            [
+                "SchoolStudentViewAccess",
+                "academy"
+            ],
+            [
+                "EnquiryDataViewAccess",
+                "academy"
+            ],
+            [
+                "EventViewAccess",
+                "academy"
+            ],
+            [
+                "BirthdayAccess",
+                "academy"
+            ],
+            [
+                "StatView",
+                "academy"
+            ],
+            [
+                "TestimonialView",
+                "academy"
+            ],
+            [
+                "KitViewAccess",
+                "inventory"
+            ],
+            [
+                "VendorViewAccess",
+                "inventory"
+            ],
+            [
+                "ItemViewAccess",
+                "inventory"
+            ],
+            [
+                "LogViewAccess",
+                "inventory"
+            ],
+            [
+                "OrderViewAccess",
+                "inventory"
+            ],
+            [
+                "SchoolOrderViewAccess",
+                "inventory"
+            ],
+            [
+                "CompetitionViewAccess",
+                "academy"
+            ],
+            [
+                "CompetitionResultViewAccess",
+                "academy"
+            ],
+            [
+                "CompetitionRegistrationsViewAccess",
+                "academy"
+            ]
+        ],
+        "policy_groups": []
+    }
+},
+{
+    "model": "appauth.userrolemodel",
+    "pk": 4,
+    "fields": {
+        "created_at": "2024-05-18T16:54:56.314Z",
+        "created_by": "",
+        "modified_at": "2024-05-18T16:54:56.318Z",
+        "modified_by": "",
+        "name": "Franchisee",
+        "config": null,
+        "is_active": true,
+        "is_default": false,
+        "policies": [
+            [
+                "AllowFromAnywhere",
+                null
+            ],
+            [
+                "StudentViewAccess",
+                "franchise"
+            ],
+            [
+                "LevelCertificateViewAccess",
+                "franchise"
+            ],
+            [
+                "CourseStartDateViewAccess",
+                "franchise"
+            ],
+            [
+                "FrameDownloadsViewAccess",
+                "packages.frame.downloads"
+            ],
+            [
+                "FrameRouterViewAccess",
+                "packages.frame.router"
+            ],
+            [
+                "AbacusViewAccess",
+                "landing"
+            ],
+            [
+                "AbacusCourseViewAccess",
+                "landing"
+            ],
+            [
+                "VedicMathsViewAccess",
+                "landing"
+            ],
+            [
+                "NotificationCrudViewAccess",
+                "notifications"
+            ],
+            [
+                "TeacherViewAccess",
+                "teacher"
+            ],
+            [
+                "OrderViewAccess",
+                "inventory"
+            ],
+            [
+                "CompetitionViewAccess",
+                "academy"
+            ],
+            [
+                "CompetitionResultViewAccess",
+                "academy"
+            ],
+            [
+                "CompetitionRegistrationsViewAccess",
+                "academy"
+            ]
+        ],
+        "policy_groups": []
+    }
+},
+{
+    "model": "appauth.userrolemodel",
+    "pk": 5,
+    "fields": {
+        "created_at": "2024-05-18T16:55:04.174Z",
+        "created_by": "",
+        "modified_at": "2024-05-18T16:55:04.178Z",
+        "modified_by": "",
+        "name": "Teacher",
+        "config": null,
+        "is_active": true,
+        "is_default": false,
+        "policies": [
+            [
+                "AllowFromAnywhere",
+                null
+            ],
+            [
+                "StudentViewAccess",
+                "franchise"
+            ],
+            [
+                "CourseStartDateViewAccess",
+                "franchise"
+            ],
+            [
+                "FrameDownloadsViewAccess",
+                "packages.frame.downloads"
+            ],
+            [
+                "FrameRouterViewAccess",
+                "packages.frame.router"
+            ],
+            [
+                "InstrcutorFeedbackViewAccess",
+                "teacher"
+            ],
+            [
+                "AbacusViewAccess",
+                "landing"
+            ],
+            [
+                "AbacusCourseViewAccess",
+                "landing"
+            ],
+            [
+                "VedicMathsViewAccess",
+                "landing"
+            ],
+            [
+                "NotificationCrudViewAccess",
+                "notifications"
+            ]
+        ],
+        "policy_groups": []
+    }
+}
+]

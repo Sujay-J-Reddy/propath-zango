@@ -1,0 +1,68 @@
+{
+    "policies": [
+        {
+            "name": "FranchiseeViewAccess",
+            "description": "Franchisee policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "franchise.views.FranchiseeCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "StudentViewAccess",
+            "description": "Student policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "franchise.views.StudentCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Franchisee",
+                "Teacher",
+                "Admin"
+            ]
+        },
+        {
+            "name": "LevelCertificateViewAccess",
+            "description": "Level Certificate policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "franchise.views.LevelCertificateCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Franchisee",
+                "Admin"
+            ]
+        },
+        {
+            "name": "CourseStartDateViewAccess",
+            "description": "Course Start Date policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "franchise.views.CourseStartDateView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Franchisee",
+                "Teacher"
+            ]
+        }
+    ]
+}

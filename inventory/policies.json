@@ -1,0 +1,95 @@
+{
+    "policies": [
+        {
+            "name": "KitViewAccess",
+            "description": "Kit policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "inventory.views.KitCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "VendorViewAccess",
+            "description": "Vendor policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "inventory.views.VendorCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "ItemViewAccess",
+            "description": "Item policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "inventory.views.ItemCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "LogViewAccess",
+            "description": "Logs policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "inventory.views.LogCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        },
+        {
+            "name": "OrderViewAccess",
+            "description": "Orders policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "inventory.views.OrderCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Franchisee",
+                "Admin"
+            ]
+        },
+        {
+            "name": "SchoolOrderViewAccess",
+            "description": "School Orders policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "inventory.views.SchoolOrderCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin"
+            ]
+        }
+    ]
+}

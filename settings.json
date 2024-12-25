@@ -1,0 +1,83 @@
+{
+    "version": "1.0.0",
+    "modules": [
+        {
+            "name": "franchise",
+            "path": "franchise"
+        },
+        {
+            "name": "academy",
+            "path": "academy"
+        },
+        {
+            "name": "inventory",
+            "path": "inventory"
+        },
+        {
+            "name": "teacher",
+            "path": "teacher"
+        },
+        {
+            "name": "notifications",
+            "path": "notifications"
+        },
+        {
+            "name": "landing",
+            "path": "landing"
+        }
+    ],
+    "app_routes": [
+        {
+            "re_path": "^franchisee/",
+            "module": "franchise",
+            "url": "urls"
+        },
+        {
+            "re_path": "^academy/",
+            "module": "academy",
+            "url": "urls"
+        },
+        {
+            "re_path": "^inventory/",
+            "module": "inventory",
+            "url": "urls"
+        },
+        {
+            "re_path": "^teacher/",
+            "module": "teacher",
+            "url": "urls"
+        },
+        {
+            "re_path": "^notifications/",
+            "module": "notifications",
+            "url": "urls"
+        },
+        {
+            "re_path": "^",
+            "module": "landing",
+            "url": "urls"
+        }
+    ],
+    "package_routes": [
+        {
+            "re_path": "^crud/",
+            "package": "crud",
+            "url": "urls"
+        },
+        {
+            "re_path": "^frame/",
+            "package": "frame",
+            "url": "urls"
+        },
+        {
+            "re_path": "^login/",
+            "package": "login",
+            "url": "urls"
+        },
+        {
+            "re_path": "^workflow/",
+            "package": "workflow",
+            "url": "urls"
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "policies": [
+        {
+            "name": "TeacherViewAccess",
+            "description": "Teacher policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "teacher.views.TeacherCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "AnonymousUsers",
+                "Franchisee",
+                "Admin"
+            ]
+        },
+        {
+            "name": "InstrcutorFeedbackViewAccess",
+            "description": "Instructor Feedback policy",
+            "statement": {
+                "permissions": [
+                    {
+                        "name": "teacher.views.InstructorFeedbackCrudView",
+                        "type": "view"
+                    }
+                ]
+            },
+            "roles": [
+                "Admin",
+                "Teacher"
+            ]
+        }
+    ]
+}
