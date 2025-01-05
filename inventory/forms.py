@@ -7,6 +7,9 @@ from ..packages.crud.form_fields import ModelField, CustomSchemaField
 from .models import Vendor, Item, Kit, Log, Order, SchoolOrder
 from ..notifications.models import Notification
 from ..franchise.models import Franchisee
+from django import forms
+
+
 class VendorForm(BaseForm):
     name = ModelField(placeholder='Vendor Name',required=True, required_msg="This field is required")
     contact = ModelField(placeholder='Contact',required=True, required_msg="This field is required")
@@ -147,6 +150,7 @@ class LogForm(BaseForm):
         return instance
     
 class OrderForm(BaseForm):
+    location = forms.ChoiceField()
     order_items = CustomSchemaField(
         required=False,
         schema={
@@ -247,6 +251,7 @@ class OrderForm(BaseForm):
         model = Order
         title = "Order"
         order = [
+            "location",
             "order_items",
             "kits"
         ]
@@ -254,6 +259,9 @@ class OrderForm(BaseForm):
     def __init__(self, *args, **kwargs):
         super(OrderForm, self).__init__(*args, **kwargs)
         instance = kwargs.get("instance")
+        franchise = get_current_franchise()
+        choices = [(f"{loc['city']} - {loc['address']}", f"{loc['city']} - {loc['address']}") for loc in franchise.get_locations()]
+        self.fields['location'].choices = choices
         items = [str(item.pk) for item in Item.objects.filter(kit=None)]
         kits = [str(kit.pk) for kit in Kit.objects.all()]
         self.custom_schema_fields["order_items"].schema["items"]["properties"]["item"]["enum"] = items
@@ -280,6 +288,7 @@ class OrderForm(BaseForm):
             instance.items = order_items
             instance.kits = kits
             instance.franchise_id=franchise.id
+            instance.location = self.data.get('location')
             instance.save()
             franchise = Franchisee.objects.get(pk=instance.franchise_id)
             Notification.objects.create(

@@ -68,10 +68,12 @@ class StudentDetail(BaseDetail):
 class LevelCertificateDetail(BaseDetail):
     def get_title(self, obj, object_data):
         return f"Request for {obj.student.s_id} - {obj.student.name}'s {obj.course} level {obj.level} certificate "
+    
 class FranchiseDetail(BaseDetail):
     photo = ModelCol(display_as="Franchise Photo")
     name = ModelCol(display_as="Name")
     franchisee_type = ModelCol(display_as="Franchisee Type")
+    locations = ModelCol(display_as="Locations")
     abacus = ModelCol(display_as="Abacus")
     vedic_maths = ModelCol(display_as="Vedic Maths")
     handwriting = ModelCol(display_as="handwriting")
@@ -79,7 +81,6 @@ class FranchiseDetail(BaseDetail):
     robotics = ModelCol(display_as="Robotics")
     dob = ModelCol(display_as="DOB")
     blood_group = ModelCol(display_as="Blood Group")
-    center_address = ModelCol(display_as="Center Address")
     communication_address = ModelCol(display_as="Communication Address")
     city = ModelCol(display_as="City")
     state = ModelCol(display_as="State")
@@ -96,6 +97,7 @@ class FranchiseDetail(BaseDetail):
             "photo",
             "name",
             "franchisee_type",
+            "locations",
             "abacus",
             "vedic_maths",
             "handwriting",
@@ -103,7 +105,6 @@ class FranchiseDetail(BaseDetail):
             "robotics",
             "dob",
             "blood_group",
-            "center_address",
             "communication_address",
             "city",
             "state",
@@ -118,6 +119,34 @@ class FranchiseDetail(BaseDetail):
 
     def photo_getval(self, obj):
         return f"<img src = {obj.photo.url}>"
+    
+    def locations_getval(self, obj):
+        location_html = """
+        <table style='width: 100%; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <th style='border: 1px solid #ddd; padding: 8px; text-align: left;'>City</th>
+                    <th style='border: 1px solid #ddd; padding: 8px; text-align: left;'>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+        """
+        
+        # Iterate through the locations list
+        for loc in obj.get_locations():
+            city = loc.get('city', 'N/A')  # Get the city or use 'N/A' if it's missing
+            address = loc.get('address', 'N/A')  # Get the address or use 'N/A' if it's missing
+            location_html += f"""
+                <tr>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>{city}</td>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>{address}</td>
+                </tr>
+            """
+        
+        location_html += "</tbody></table>"
+        return location_html
+
+
 
     def get_title(self, obj, object_data):
         """

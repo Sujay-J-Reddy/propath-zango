@@ -71,6 +71,7 @@ class SchoolOrderDetail(BaseDetail):
 class OrderDetail(BaseDetail):
     id = ModelCol(display_as="DC Number")
     franchise = ModelCol(display_as="Franchise")
+    location = ModelCol(display_as="Location")
     kits = ModelCol(display_as="Kits")
     items = ModelCol(display_as="Items")
     order_date = ModelCol(display_as="Order Date")
@@ -80,6 +81,7 @@ class OrderDetail(BaseDetail):
         fields = [
             "id",
             "franchise",
+            "location",
             "kits",
             "items",
             "order_date",

@@ -177,6 +177,7 @@ class LogTable(ModelTable):
 class OrderTable(ModelTable):
     id = ModelCol(display_as="DC Number", searchable=True, sortable=True)
     franchise = ModelCol(display_as="Franchise", searchable=True, sortable=True, user_roles=["Admin"])
+    location = ModelCol(display_as="Location", searchable=True, sortable=True)
     kits = ModelCol(display_as="Kits", searchable=True, sortable=True)
     items = ModelCol(display_as="Items", searchable=True, sortable=True)
     order_date = ModelCol(display_as="Order Date", searchable=True, sortable=True)
@@ -190,6 +191,7 @@ class OrderTable(ModelTable):
         fields = [
             "id",
             "franchise",
+            "location",
             "kits",
             "items",
             "order_date",
