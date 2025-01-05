@@ -60,8 +60,8 @@
     ],
     "package_routes": [
         {
-            "re_path": "^crud/",
-            "package": "crud",
+            "re_path": "^login/",
+            "package": "login",
             "url": "urls"
         },
         {
@@ -70,13 +70,18 @@
             "url": "urls"
         },
         {
-            "re_path": "^login/",
-            "package": "login",
+            "re_path": "^crud/",
+            "package": "crud",
             "url": "urls"
         },
         {
             "re_path": "^workflow/",
             "package": "workflow",
+            "url": "urls"
+        },
+        {
+            "re_path": "^styles/",
+            "package": "styles",            
             "url": "urls"
         }
     ],

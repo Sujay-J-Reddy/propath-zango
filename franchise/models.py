@@ -1,5 +1,7 @@
 import datetime
 from django.db import models
+import json
+
 from zango.apps.dynamic_models.models import DynamicModelBase
 from zango.apps.dynamic_models.fields import ZForeignKey, ZOneToOneField
 from zango.core.storage_utils import ZFileField
@@ -39,7 +41,7 @@ class Franchisee(DynamicModelBase):
     robotics = models.BooleanField(default=False)
     dob = models.DateField()
     blood_group = models.CharField(max_length=3, choices=BLOOD_GROUP_CHOICES)
-    center_address = models.TextField()
+    locations = models.TextField(default="[]")
     communication_address = models.TextField()
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
@@ -54,10 +56,17 @@ class Franchisee(DynamicModelBase):
 
     def __str__(self):
         return self.name
+    
+    def set_locations(self, locations):
+        self.locations = json.dumps(locations)
+
+    def get_locations(self):
+        return json.loads(self.locations or "[]")
 
 class Student(DynamicModelBase):
     s_id = models.CharField(max_length=20, unique=True)
     franchise = ZForeignKey(Franchisee,on_delete=models.CASCADE)
+    location = models.CharField(max_length=255)
     name = models.CharField(max_length=100)
     photo = ZFileField()
     course = models.CharField(max_length=20, choices=[('abacus', 'Abacus'), ('vedic_maths', 'Vedic Maths'),('handwriting', 'Handwriting'),], null=True)
@@ -81,6 +90,7 @@ class Student(DynamicModelBase):
     join_date = models.DateField(auto_now_add=True)
     course_start_date = models.DateField(blank=True, null=True)
     dropped = models.BooleanField(default=False)
+
 
     def __str__(self):
         return f"{self.s_id} - {self.name}"

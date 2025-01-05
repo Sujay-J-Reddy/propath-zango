@@ -7,6 +7,7 @@ from ..academy.models import School
 
 class Order(DynamicModelBase):
     franchise = ZForeignKey(Franchisee, on_delete=models.CASCADE)
+    location = models.CharField(max_length=255)
     kits = models.JSONField(null=True)  
     items = models.JSONField(null=True) 
     order_date = models.DateTimeField(auto_now_add=True)

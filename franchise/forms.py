@@ -10,9 +10,14 @@ from zango.core.utils import get_current_request
 from .utils import get_current_franchise
 from django import forms
 from django.core.exceptions import ValidationError
+import json
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class StudentForm(BaseForm):
+    location = forms.ChoiceField()
     s_id = ModelField(placeholder="Student ID", required=True, required_msg="This field is required", label="Student ID")
     name = ModelField(placeholder="Name", required=True, required_msg="This field is required")
     photo = ModelField(placeholder="Upload Photo", required=True, required_msg="This field is required")
@@ -41,7 +46,9 @@ class StudentForm(BaseForm):
     class Meta:
         model = Student
         title = 'Add New Student'
-        order = ['s_id', 
+        order = [
+            'location',
+            's_id', 
             'name', 
             'photo', 
             'course', 
@@ -66,11 +73,22 @@ class StudentForm(BaseForm):
             'course_start_date', 
             'dropped']
         
+    def __init__(self, *args, **kwargs):
+        super(StudentForm, self).__init__(*args, **kwargs)
+        self.update = False
+        franchise = get_current_franchise()
+        choices = [(f"{loc['city']} - {loc['address']}", f"{loc['city']} - {loc['address']}") for loc in franchise.get_locations()]
+        self.fields['location'].choices = choices
+        instance = kwargs.get("instance")
+
+        if instance is not None:
+            self.update = True
+        
     def save(self, commit=True):
         instance = super().save(commit=False)
         if commit:
             instance.franchise = get_current_franchise()
-            print(instance.franchise)
+            instance.location = self.data.get('location')
             instance.save()
         return instance
     
@@ -209,7 +227,43 @@ class FranchiseeForm(BaseForm):
     robotics = ModelField(placeholder="Robotics")
     dob = ModelField(placeholder="Date of Birth", required=True, required_msg="This field is required")
     blood_group = ModelField(placeholder="Blood Group")
-    center_address = ModelField(placeholder="Center Address", required=True, required_msg="This field is required")
+    locations = CustomSchemaField(
+        required=True,
+        schema={
+            "type": "array",
+            "title": "Locations",
+            "items": {
+                "type": "object",
+                "required": ["city", "address"],
+                "properties": {
+                    "city": {
+                        "type": "string",
+                        "title": "City",
+                    },
+                    "address": {
+                        "type": "string",
+                        "title": "Address",
+                    },
+                },
+            },
+        },
+        ui_schema={
+            "items": {
+                "city": {
+                    "ui:tooltip": "City Name",
+                    "ui:classNames": "col-span-12 sm:col-span-6",
+                    "ui:placeholder": "Enter city",
+                    "ui:errorMessages": {"required": "This field is required."},
+                },
+                "address": {
+                    "ui:tooltip": "Address",
+                    "ui:classNames": "col-span-12 sm:col-span-6",
+                    "ui:placeholder": "Enter address",
+                    "ui:errorMessages": {"required": "This field is required."},
+                },
+            }
+        },
+    )
     communication_address = ModelField(placeholder="Communication Address", required=True, required_msg="This field is required")
     city = ModelField(placeholder="City", required=True, required_msg="This field is required")
     state = ModelField(placeholder="State", required=True, required_msg="This field is required")
@@ -227,7 +281,7 @@ class FranchiseeForm(BaseForm):
         order = ['name', 
             'contact_number', 
             'communication_address', 
-            'center_address', 
+            'locations', 
             'photo', 
             'franchisee_type', 
             'abacus', 
@@ -246,14 +300,22 @@ class FranchiseeForm(BaseForm):
             'experience_in_franchisee_model', 
             'find_about_us']
         
+    def __init__(self, *args, **kwargs):
+        super(FranchiseeForm, self).__init__(*args, **kwargs)
+        self.update = False
+        instance = kwargs.get("instance")
+        if instance is not None:
+            self.update = True
+            locations_data = instance.get_locations()
+            self.custom_schema_fields["locations"].schema["default"] = locations_data
+            self.initial['locations'] = locations_data  
+
     def save(self, commit=True):
         instance = super(FranchiseeForm, self).save(commit=False)
+
         if instance.pk is None:
-            # !ToDo: Remove hard coded password, pass empty and core will set unusable password.
             password = "Propath@1234"
             user_role = UserRoleModel.objects.get(name="Franchisee")
-
-            # Creating new user for patient
             creation_result = AppUserModel.create_user(
                 f"{instance.name}",
                 instance.email,
@@ -263,8 +325,6 @@ class FranchiseeForm(BaseForm):
                 False,
                 False,
             )
-
-            # Handling user mapping for patient
             instance.user = creation_result["app_user"]
             instance.consent = True
             if instance.user.app_objects is None:
@@ -273,13 +333,55 @@ class FranchiseeForm(BaseForm):
                 {str(user_role.id): str(instance.object_uuid)}
             )
 
-            # Automatically remember the patient's enrolment progress so they can resume where they left off.
-            # This improves convenience and reduces friction in the enrolment process.
+        locations_data = self.data.get("locations")
+
+        if locations_data and isinstance(locations_data, str):
+            try:
+                locations_data = json.loads(locations_data)
+                print("Parsed locations data:", locations_data)
+            except json.JSONDecodeError:
+                print("Failed to parse JSON for locations")
+                return instance
+
+        if locations_data and isinstance(locations_data, list):
+            old_locations = instance.get_locations()
+            location_updates = {}
+
+            for new_loc in locations_data:
+                matching_old_locations = [
+                    old_loc for old_loc in old_locations 
+                    if old_loc['address'] == new_loc['address']
+                ]
+
+                for old_loc in matching_old_locations:
+                    old_location_str = f"{old_loc['city']} - {old_loc['address']}"
+                    new_location_str = f"{new_loc['city']} - {new_loc['address']}"
+
+                    if old_location_str != new_location_str:
+                        location_updates[old_location_str] = new_location_str
+
+            instance.set_locations(locations_data)
+
+            if location_updates:
+                students = Student.objects.filter(franchise=instance)
+
+                for student in students:
+                    student_location = getattr(student, 'location', None)
+
+                    if student_location in location_updates:
+                        new_location = location_updates[student_location]
+                        student.location = new_location
+                        student.save()
+            else:
+                print("No location updates needed for students")
+
         if commit:
             instance.save()
-            instance.user.save()
+            if hasattr(instance, 'user'):
+                instance.user.save()
 
-        return instance   
+        return instance
+
 
 class CompetitionStudentForm(BaseForm):
     students =  CustomSchemaField(

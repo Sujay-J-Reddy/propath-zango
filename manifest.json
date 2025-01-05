@@ -1,16 +1,16 @@
 {
     "packages": [
         {
-            "name": "crud",
-            "version": "0.3.0"
+            "name": "login",
+            "version": "0.6.0"
         },
         {
             "name": "frame",
             "version": "0.5.1"
         },
         {
-            "name": "login",
-            "version": "0.6.0"
+            "name": "crud",
+            "version": "0.3.0"
         },
         {
             "name": "workflow",
@@ -18,7 +18,7 @@
         },
         {
             "name":"styles",
-            "version":"0.1.0"
+            "version":"1.0.0"
         }
     ]
 }

@@ -15,9 +15,6 @@ class LoginConfigModel(DynamicModelBase):
     )
     config = models.JSONField(default=dict, help_text="User Role based Login Config")
 
-    class DynamicModelMeta:
-        is_config_model = True
-
     def __str__(self):
         return f"LoginConfigModel - {self.user_role.name}"
 
@@ -26,9 +23,6 @@ class GenericLoginConfigModel(DynamicModelBase):
     config = models.JSONField(default=dict, help_text="Generic Login Config")
     logo = ZFileField(blank=True, null=True)
     background_image = ZFileField(blank=True, null=True)
-
-    class DynamicModelMeta:
-        is_config_model = True
 
     def __str__(self):
         return f"GenericLoginConfigModel - {self.id}"

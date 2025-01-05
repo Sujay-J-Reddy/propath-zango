@@ -15,7 +15,7 @@ class FranchiseeTable(ModelTable):
     contact_number = ModelCol(
         display_as="Contact Number", sortable=True, searchable=True
     )
-    center_address = ModelCol(display_as="Address", sortable=False, searchable=True)
+    locations = ModelCol(display_as="Locations", sortable=True, searchable=True)
     country = ModelCol(display_as="Country", sortable=True, searchable=True)
     email = ModelCol(display_as="Mail", sortable=True, searchable=True)
     table_actions = []
@@ -40,16 +40,42 @@ class FranchiseeTable(ModelTable):
             "id",
             "name",
             "contact_number",
-            "center_address",
             "email",
         ]
-        card_primary_fields = [ "email","contact_number", "center_address"]
+        card_primary_fields = [ "email","contact_number"]
 
 
     def can_perform_row_action_edit(self, request, obj):
         # Implement logic to check if the user can perform the Edit action
         # Example: Check if the user has the necessary permissions to edit records
         return True
+    
+    
+    
+    def locations_getval(self, obj):
+        location_html = """
+        <table style='width: 100%; border-collapse: collapse;'>
+            <thead>
+                <tr>
+                    <th style='border: 1px solid #ddd; padding: 8px; text-align: left;'>City</th>
+                    <th style='border: 1px solid #ddd; padding: 8px; text-align: left;'>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+        """
+        
+        for loc in obj.get_locations():
+            city = loc.get('city', 'N/A')  
+            address = loc.get('address', 'N/A')  
+            location_html += f"""
+                <tr>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>{city}</td>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>{address}</td>
+                </tr>
+            """
+        
+        location_html += "</tbody></table>"
+        return location_html
 
     def id_Q_obj(self, search_term):
         if search_term is not None:
@@ -66,9 +92,9 @@ class FranchiseeTable(ModelTable):
             return Q(contact_number__contains=search_term)
         return Q()
 
-    def center_address_Q_obj(self, search_term):
+    def locations_Q_obj(self, search_term):
         if search_term is not None:
-            return Q(center_address__contains=search_term)
+            return Q(location__contains=search_term)    
         return Q()
 
     def email_Q_obj(self, search_term):
@@ -77,7 +103,9 @@ class FranchiseeTable(ModelTable):
         return Q()
     
     
+    
 class StudentTable(ModelTable):
+    location = ModelCol(display_as="Location", sortable=True, searchable=True, choices=[(1, "smg"),(2,"bdvt")])
     s_id = ModelCol(display_as="ID", sortable=True, searchable=True)
     photo = ModelCol(display_as="Photo", sortable=False, searchable=False)
     name = ModelCol(display_as="Name", sortable=True, searchable=True)
@@ -120,6 +148,7 @@ class StudentTable(ModelTable):
         model = Student
         detail_class = StudentDetail
         fields = [
+            "location",
             "photo",
             "s_id",
             "franchise",
