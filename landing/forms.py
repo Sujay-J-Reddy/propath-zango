@@ -2,6 +2,12 @@ from ..packages.crud.base import BaseForm
 from ..notifications.models import Notification
 from ..academy.models import Enquiry
 from ..packages.crud.form_fields import ModelField
+from django import forms
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Enquiry
+        fields = ['name', 'mail', 'type', 'phone_country_code', 'phone_number', 'city', 'pin', 'state', 'country']
 
 class EnquiryForm(BaseForm):
     name = ModelField(placeholder="Name", required=True, required_msg="This field is required")
@@ -41,4 +47,5 @@ class EnquiryForm(BaseForm):
             )
             instance.save()
         return instance
+    
     

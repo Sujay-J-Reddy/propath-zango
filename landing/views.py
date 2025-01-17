@@ -6,9 +6,38 @@ from .forms import EnquiryForm
 from ..academy.models import Event, Stat, Testimonial
 from django.utils.timezone import now
 from zango.apps.shared.tenancy.templatetags.zstatic import zstatic
+from .forms import PostForm
+from ..academy.models import Enquiry
+from django.contrib import messages
+from django.shortcuts import redirect
+
 
 class LandingView(TemplateView):
     template_name = 'landing/home.html'
+
+    def post(self, request, *args, **kwargs):
+
+        enquiry = Enquiry(
+            name=request.POST.get('name'),
+            mail=request.POST.get('email'),
+            phone_country_code=request.POST.get('countryCode'),
+            phone_number=request.POST.get('phone_number'),
+            city=request.POST.get('city'),
+            pin=request.POST.get('pin'),
+            state=request.POST.get('state'),
+            country=request.POST.get('country'),
+            type=request.POST.get('type')
+        )
+
+        enquiry.save()  # Save to database
+
+            
+        # Add a success message
+        messages.success(request, 'Enquiry submitted successfully.')
+        
+        # Redirect with a success flag
+        return redirect(f"{request.path}?success=true")
+        
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

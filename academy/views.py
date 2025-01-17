@@ -7,6 +7,10 @@ from ..franchise.forms import CompetitionStudentForm
 from zango.core.utils import get_current_role
 from django.shortcuts import render
 from django.views.generic import TemplateView, FormView
+from django.views import View
+from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Enquiry
 from datetime import datetime
 from ..franchise.models import Franchisee, Student
 from ..teacher.models import Teacher
@@ -14,20 +18,40 @@ from ..notifications.models import Notification
 from ..landing.forms import EnquiryForm
 
     
-class EnquiryDataView(BaseCrudView):
-    page_title = "Enquiries"
-    add_btn_title = "Add"
-    table = EnquiryTable
-    form = EnquiryForm
+class EnquiryDataView(View):
+    def post(self, request):
+        try:
+            name = request.POST.get('name')
+            mail = request.POST.get('email')
+            enquiry_type = request.POST.get('type')
+            phone_country_code = request.POST.get('countryCode')
+            phone_number = request.POST.get('phone_number')
+            city = request.POST.get('city')
+            pin = request.POST.get('pin')
+            state = request.POST.get('state')
+            country = request.POST.get('country')
 
-    def has_add_perm(self, request):
-        return True
-    
-    def display_add_button_check(self, request):
-        return False
-    
-    def display_download_button_check(self, request):
-        return get_current_role().name in [ 'Admin']
+            if not all([name, mail, enquiry_type, phone_country_code, phone_number, city, pin, state, country]):
+                return JsonResponse({'error': 'All fields are required.'}, status=400)
+
+            Enquiry.objects.create(
+                name=name,
+                mail=mail,
+                type=enquiry_type,
+                phone_country_code=phone_country_code,
+                phone_number=phone_number,
+                city=city,
+                pin=pin,
+                state=state,
+                country=country
+            )
+
+            return JsonResponse({'message': 'Enquiry submitted successfully!'}, status=201)
+
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+
+
     
 class EventCrudView(BaseCrudView):
     page_title = "Events"

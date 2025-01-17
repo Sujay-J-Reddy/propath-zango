@@ -60,35 +60,10 @@ class CompetitionResult(DynamicModelBase):
         return f"{self.student.s_id} - {self.student.name}"
     
 class Enquiry(DynamicModelBase):
-    STUDENT = 'Student'
-    FRANCHISEE = 'Franchisee'
-    TEACHER = 'Teacher'
-
-    ENQUIRY_TYPE_CHOICES = [
-        (STUDENT, 'Student'),
-        (FRANCHISEE, 'Franchisee'),
-        (TEACHER, 'Teacher'),
-    ]
-
-    COUNTRY_CODES = [
-        ('+1', '+1 (United States)'),
-        ('+44', '+44 (United Kingdom)'),
-        ('+91', '+91 (India)'),
-        ('+86', '+86 (China)'),
-        ('+81', '+81 (Japan)'),
-        ('+49', '+49 (Germany)'),
-        ('+7', '+7 (Russia)'),
-        ('+55', '+55 (Brazil)'),
-        ('+33', '+33 (France)'),
-        ('+39', '+39 (Italy)'),
-        ('+82', '+82 (South Korea)'),
-        # Add more country codes as needed
-    ]
-
     name = models.CharField(max_length=255)
     mail = models.EmailField()
-    type = models.CharField(max_length=255, choices=ENQUIRY_TYPE_CHOICES)
-    phone_country_code = models.CharField(max_length=5, choices=COUNTRY_CODES)
+    type = models.CharField(max_length=255)
+    phone_country_code = models.CharField(max_length=5)
     phone_number = models.CharField(max_length=15)
     city = models.CharField(max_length=255)
     pin = models.CharField(max_length=10)

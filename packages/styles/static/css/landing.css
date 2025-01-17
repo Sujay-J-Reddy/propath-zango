@@ -1,3 +1,11 @@
+:root {
+  --primary-color: #293179 ;
+  --text-color: #e3e6f0;
+  --hover-color: #f4b400;
+  ; 
+}
+
+
 .logo-png {
   width: 120px;
   height: 60px;
@@ -14,7 +22,8 @@
 
 /* Navigation Bar Styles */
 #top-nav {
-  background-color: rgb(241, 227, 156);
+  background-color: var(--primary-color);
+  color: var(--text-color);
   height: 66px;
   font-size: 25px;
   position: sticky;
@@ -84,15 +93,15 @@
 
 .signin-btn:hover {
   cursor: pointer;
-  background-color: rgb(191, 84, 84);
-  color: white;
+  background-color: var(--hover-color);
+  color: black;
   transition-duration: 0.15s;
 }
 
 /* Footer Styles */
 footer {
-  background-color:  rgb(241, 227, 156);
-  color: black;
+  background-color:  var(--primary-color);
+  color: var(--text-color);
   padding: 20px;
   text-align: center;
 }
@@ -126,8 +135,8 @@ footer {
 }
 
 .footer-img {
-  max-height: 160px;
-  margin-right: 150px;
+  max-height: 180px;
+  margin-right: 160px;
 }
 
 .footer-details {
@@ -149,7 +158,7 @@ footer {
 }
 
 .footer-details p a {
-  color: black;
+  color: var(--text-color);
   text-decoration: none;
   border-bottom: 1px solid transparent;
 }
@@ -292,7 +301,6 @@ h2 {
 
 p {
   font-size: 1.2rem;
-  color: black;
   max-width: 500px;
   margin: 0 auto;
   line-height: 1.5;
@@ -412,8 +420,16 @@ footer {
   font-size: 24px;
 }
 
+.nav-item, .nav-link {
+  color: var(--text-color);
+}
+
 .nav-link {
 font-weight: bold;
+}
+
+.nav-link:hover {
+  color: var(--hover-color);
 }
 
 @media (max-width: 767px) {

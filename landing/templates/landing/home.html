@@ -2,277 +2,1115 @@
 {% block content %}
 {% load zstatic %}
 
-<main style="background: linear-gradient(to right, #a9dbfc, #4285d1);">
-
-    <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-                <img src="{% zstatic 'packages/styles/images/landing/hero1.jpg' %}" 
-                     class="d-block mx-lg-auto img-fluid rounded border" 
-                     alt="Abacus Image" width="700" height="500" loading="lazy">
-            </div>
-            <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
-                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
-                    <span class="title-span">Propath</span> Academy </br>
-                    <span class="h4 text-muted">Unlock Potential with Abacus and Vedic Math!</span>
-                </h1>
-        
-                <p class="lead1 p-3 rounded large mb-3">
-                    At Propath Academy, we inspire young minds with engaging after-school programs designed for children aged 6 to 14. Our Abacus and Vedic Maths classes develop critical thinking, problem-solving, and calculation skills while making learning fun!
-        
-                    Our specialized programs in Abacus, Vedic Math, and Handwriting are designed to cultivate essential skills that lay the foundation for academic excellence and personal growth.
-                </p>
-        
-                <a href="/enquire" class="btn-genius mt-3">
-                    Join Us Now!
-                </a>
-            </div>
+<!-- 1st section starts here -->
+<div class="pt-20 bg-gray-900 text-gray-300">
+  <div class="max-w-7xl mx-auto p-4">
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-6xl font-extrabold text-white leading-tight">
+          Unlock Your Child's <span class="text-orange-500">Mathematical Potential</span>
+        </h2>
+        <p class="mt-5 text-lg leading-6 py-4">
+          Expert training in Abacus, Vedic Mathematics, and Handwriting Enhancement. Building strong foundations for
+          academic excellence.
+        </p>
+        <div class="mt-10 mb-6 space-x-4">
+          <a href="#courses"
+            class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded text-sm font-medium">Explore
+            Courses</a>
+          <a href="#enquiry"
+            class="border border-gray-300 hover:border-white text-sm text-gray-300 hover:text-white px-6 py-3 rounded">Join
+            Us</a>
         </div>
-
-        <div class="courses-frame mt-5">
-            <div class="">
-                <h2 class="border-bottom pb-2 mb-4 bold">Courses</h2>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card h-100 shadow-sm d-flex flex-column">
-                            <img src="{% zstatic 'packages/styles/images/landing/hero1.jpg' %}" 
-                                 alt="Abacus Image" class="card-img-top border-bottom">
-                            <div class="card-body d-flex flex-column">
-                                <p class="card-text">
-                                    Discover the ancient tool of mental arithmetic. Our Abacus program helps children develop strong numerical skills and enhances their concentration and memory through fun and interactive learning techniques.
-                                </p>
-                                <div class="mt-auto">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a href="/courses" class="btn btn-sm btn-outline-primary">View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 shadow-sm d-flex flex-column">
-                            <img src="{% zstatic 'packages/styles/images/landing/hero1.jpg' %}" 
-                                 alt="Vedic Math Image" class="card-img-top border-bottom">
-                            <div class="card-body d-flex flex-column">
-                                <p class="card-text">Unlock the secrets of Vedic mathematics and unleash your mathematical genius. Our Vedic Maths program offers innovative techniques for quick mental calculations, making math easy and enjoyable for learners of all ages.</p>
-                                <div class="mt-auto">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a href="/courses" class="btn btn-sm btn-outline-primary">View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 shadow-sm d-flex flex-column">
-                            <img src="{% zstatic 'packages/styles/images/landing/hero1.jpg' %}" 
-                                 alt="Handwriting Image" class="card-img-top border-bottom">
-                            <div class="card-body d-flex flex-column">
-                                <p class="card-text">Our Handwriting program focuses on improving penmanship, letter formation, and overall legibility. Whether you're a child learning to write or an adult looking to refine your handwriting, we've got you covered.</p>
-                                <div class="mt-auto">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a href="/courses" class="btn btn-sm btn-outline-primary">View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="p-4 mx-6 my-10">
+          <div class="mt-3 flex justify-between">
+            <div>
+              <h1 class="text-orange-500 text-4xl font-bold">{{numbers.students}}+</h1>
+              <span class="text-center pl-4">Students</span>
             </div>
+            <div>
+              <h1 class="text-orange-500 text-4xl font-bold">{{numbers.franchises}}+</h1>
+              <span class="text-center">Franchises</span>
+            </div>
+            <div>
+              <h1 class="text-orange-500 text-4xl font-bold ">{{numbers.teachers}}+</h1>
+              <span class="text-center">Teachers</span>
+            </div>
+          </div>
+          <div></div>
         </div>
+      </div>
 
-        <h2 class="pb-2 border-bottom bold">Events At Propath</h2>
-        <div class="bd-example m-0 border-0 ms-lg-4 ps-lg-5">
-
-
-            <div id="carouselExampleCaptions" class="carousel slide carousel-fade"  data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item  active">
-                        {% if event1.photo %}
-                        <img src="{{ event1.photo.url }}" class="d-block w-100 standard-carousel-image img-fluid"
-                            alt="Event Photo" height="60%" width="40%">
-                        {% else %}
-                        <img src="{{ default_photo_url }}" class="d-block w-100 standard-carousel-image img-fluid"
-                            alt="Event Photo" height="60%" width="40%">
-                        {% endif %}
-                        <div class="carousel-caption d-none d-md-block me-lg-5 bg-dark bg-opacity-50 rounded">
-                            <h5 class="carousel-title">{{event1.name}}</h5>
-                            <p class="carousel-details">{{event1.details}}</p>
-                            <p class="carousel-details">{{event1.date}}</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item ">
-                        {% if event2.photo %}
-                        <img src="{{ event2.photo.url }}" class="d-block w-100 standard-carousel-image img-fluid"
-                            alt="Event Photo" height="60%" width="40%">
-                        {% else %}
-                        <img src="{{ default_photo_url }}" class="d-block w-100 standard-carousel-image img-fluid"
-                            alt="Event Photo" height="60%" width="40%">
-                        {% endif %}
-                        <div class="carousel-caption d-none d-md-block me-lg-5 bg-dark bg-opacity-50 rounded">
-                            <h5 class="carousel-title">{{event2.name}}</h5>
-                            <p class="carousel-details">{{event2.details}}</p>
-                            <p class="carousel-details">{{event2.date}}</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item ">
-                        {% if event3.photo %}
-                        <img src="{{ event3.photo.url }}" class="d-block w-100 standard-carousel-image img-fluid"
-                            alt="Event Photo" height="60%" width="40%">
-                        {% else %}
-                        <img src="{{ default_photo_url }}" class="d-block w-100 standard-carousel-image img-fluid"
-                            alt="Event Photo" height="60%" width="40%">
-                        {% endif %}
-                        <div class="carousel-caption d-none d-md-block me-lg-5 bg-dark bg-opacity-50 rounded">
-                            <h5 class="carousel-title">{{event3.name}}</h5>
-                            <p class="carousel-details">{{event3.details}}</p>
-                            <p class="carousel-details">{{event3.date}}</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev black" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon bg-secondary bg-dark bg-opacity-50" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next me-lg-5" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon bg-secondary bg-dark bg-opacity-50" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+      <!-- Right Feature Cards -->
+      <div class="bg-gray-700 p-10 rounded-lg shadow-lg">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+            <div class="text-center">
+              <p class="text-lg font-medium text-white pt-2"><span class="text-2xl">🧮</span><br>Abacus</p>
             </div>
-
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+            <div class="text-center">
+              <p class="text-lg font-medium text-white pt-2"><span class="text-2xl">📐</span><br>Vedic Maths</p>
+            </div>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+            <div class="text-center">
+              <p class="text-lg font-medium text-white pt-2"><span class="text-2xl">✍️</span><br>Handwriting</p>
+            </div>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+            <div class="text-center">
+              <p class="text-lg font-medium text-white pt-2"><span class="text-2xl">🎯</span><br>Mental Skills</p>
+            </div>
+          </div>
         </div>
+        <div id="courses"></div>
+      </div>
+    </div>
+  </div>
 
-        <h2 class="pb-2 border-bottom mt-5 mb-4 bold">Our Numbers</h2>
+</div>
+<!-- 1st section ends here -->
 
-        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-            <div class="col">
-                <div class="card card-cover overflow-hidden text-bg-primary rounded-4 shadow-lg">
-                    <div class="d-flex flex-column h-100 p-4 text-white text-shadow-1">
-                        <h3 class="count-number display-4">{{numbers.students}}+</h3>
-                        <h2 class="count-category">Students</h2>
-                    </div>
-                </div>
+
+<!-- 2nd section starts here -->
+<div class="bg-gray-50">
+  <section class="text-center py-16">
+    <h2 class="text-3xl font-bold text-gray-800">Our Featured Courses</h2>
+    <p class="text-gray-600 mt-4 text-lg pb-6">
+      Comprehensive programs designed to enhance your child's cognitive abilities
+    </p>
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 px-4">
+      <!-- Abacus Training -->
+      <div
+        class="bg-white shadow-md rounded-lg p-6 border-t-4 border-orange-500 overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <p class="text-left text-5xl pb-5">🧮</p>
+        <h3 class=" text-left text-xl font-semibold text-gray-800">Abacus Training</h3>
+        <p class="text-left text-gray-600 mt-3">
+          Master mental arithmetic through ancient calculation techniques
+        </p>
+        <ul class="text-left mt-4 text-gray-600 space-y-2 p-2">
+          <li>✔ Speed Mathematics</li>
+          <li>✔ Mental Calculations</li>
+          <li>✔ Brain Development</li>
+        </ul>
+        <!-- <button onclick="abacus()" class="bg-orange-500 text-white px-5 py-3 rounded-md mt-5 w-full hover:bg-orange-600">
+            Learn More
+          </button> -->
+
+
+        <!-- Modal toggle -->
+        <button data-modal-target="abacus-modal" data-modal-toggle="abacus-modal"
+          class="bg-orange-500 text-white px-5 py-3 rounded-md mt-5 w-full hover:bg-orange-600" type="button">
+          Learn More
+        </button>
+
+
+
+      </div>
+
+
+
+      <!-- Vedic Mathematics Modal -->
+      <div id="vedic-modal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-screen bg-black bg-opacity-50">
+        <div class="relative p-4 w-full max-w-6xl mx-auto">
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="flex items-center justify-between p-6 md:p-8 border-b rounded-t dark:border-gray-600">
+              <h3 class="text-3xl font-semibold text-gray-900 dark:text-white">
+                Vedic Mathematics: Ancient Wisdom for Modern Calculations
+              </h3>
+              <button type="button"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="vedic-modal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
             </div>
 
-            <div class="col">
-                <div class="card card-cover overflow-hidden text-bg-success rounded-4 shadow-lg">
-                    <div class="d-flex flex-column h-100 p-4 text-white text-shadow-1">
-                        <h3 class="count-number display-4">{{numbers.franchises}}+</h3>
-                        <h2 class="count-category">Franchises</h2>
-                    </div>
+            <div class="p-6 md:p-8 space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex items-center justify-center">
+                  <img src="{{ default_photo_url }}" class="w-full h-48 object-cover" alt="Event Photo" height="60%" width="40%">
                 </div>
-            </div>
-
-            <div class="col">
-                <div class="card card-cover overflow-hidden text-bg-info rounded-4 shadow-lg">
-                    <div class="d-flex flex-column h-100 p-4 text-white text-shadow-1">
-                        <h3 class="count-number display-4">{{numbers.teachers}}+</h3>
-                        <h2 class="count-category">Teachers</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="py-8 ">
-            <div class="container">
-              <!-- row -->
-              <div class="row border-bottom mb-5">
-                <div class="offset-xl-3 col-xl-6 col-md-12 ">
-                  <!-- heading -->
-                  <h2 class="bold">Testimonials</h2>
-            
+                <div class="space-y-4">
+                  <h4 class="text-2xl font-semibold text-gray-900 dark:text-white">What is Vedic Mathematics?</h4>
+                  <p class="text-lg text-gray-600 dark:text-gray-300">
+                    Vedic Mathematics is an ancient Indian system of mathematics that consists of 16 sutras (formulas)
+                    and 13 sub-sutras. These techniques offer powerful shortcuts for solving mathematical calculations
+                    mentally.
+                  </p>
                 </div>
               </div>
-              
-            
-            
-              <div class="row">
-                <!-- col -->
-                <div class="col-md-6 col-12">
-                  <!-- card -->
-                  <div class="card mb-6 mb-lg-0">
-                    <!-- card body -->
-                    <div class="card-body p-6">
-                      <span class=" mb-3 d-block">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-quote text-light-primary  "
-                        viewBox="0 0 16 16">
-                        <path
-                          d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
-                      </svg>
-               
-                      <p class="fs-3 text-dark fw-semibold">"{{testimonial1.quote}}"</p>
-               
-                      <div class="d-flex mt-4 align-items-center">
-                        <img src="../assets/images/avatar/avatar-1.jpg" alt="" class="avatar avatar-md rounded-circle">
-                        <div class="ms-2">
-                          <h5 class="text-primary mb-0">{{testimonial1.name}}</h5>
-                          <p class="mb-0 fs-6">{{testimonial1.designation}}</p>
-                        </div>
-                      </div>
-                    </div>
+
+              <div class="mt-8">
+                <h4 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Benefits of Vedic Mathematics</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div class="p-6 bg-gray-50 rounded-lg dark:bg-gray-600">
+                    <h5 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Speed Calculation</h5>
+                    <p class="text-gray-600 dark:text-gray-300">Dramatically reduces calculation time using special
+                      techniques and shortcuts.</p>
+                  </div>
+                  <div class="p-6 bg-gray-50 rounded-lg dark:bg-gray-600">
+                    <h5 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Pattern Recognition</h5>
+                    <p class="text-gray-600 dark:text-gray-300">Develops ability to recognize mathematical patterns and
+                      relationships.</p>
+                  </div>
+                  <div class="p-6 bg-gray-50 rounded-lg dark:bg-gray-600">
+                    <h5 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Mental Agility</h5>
+                    <p class="text-gray-600 dark:text-gray-300">Enhances mental calculation abilities and mathematical
+                      confidence.</p>
                   </div>
                 </div>
-                <div class="col-md-6 col-12">
-                  <!-- card -->
-                  <div class="card">
-                    <!-- card body -->
-                    <div class="card-body p-6">
-            
-                      <span class=" mb-3 d-block">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-quote text-light-primary  "
-                        viewBox="0 0 16 16">
-                        <path
-                          d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
-                      </svg>
-                      </span>
-                      <p class="fs-3 text-dark fw-semibold">"{{testimonial2.quote}}"</p>
-                      <div class="d-flex mt-4 align-items-center">
-                        <img src="../assets/images/avatar/avatar-9.jpg" alt="" class="avatar avatar-md rounded-circle">
-                        <div class="ms-2">
-                          <h5 class="text-primary mb-0">{{testimonial2.name}}</h5>
-                          <p class="mb-0 fs-6">{{testimonial2.designation}}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
+              </div>
             </div>
-                 </div>
+
+            <div
+              class="flex items-center justify-end p-6 md:p-8 border-t border-gray-200 rounded-b dark:border-gray-600 space-x-4">
+              <button data-modal-hide="vedic-modal" type="button"
+                class="py-3 px-8 text-lg font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Handwriting Modal -->
+      <div id="handwriting-modal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-screen bg-black bg-opacity-50">
+        <div class="relative p-4 w-full max-w-6xl mx-auto">
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="flex items-center justify-between p-6 md:p-8 border-b rounded-t dark:border-gray-600">
+              <h3 class="text-3xl font-semibold text-gray-900 dark:text-white">
+                The Art of Handwriting: Developing Beautiful Penmanship
+              </h3>
+              <button type="button"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="handwriting-modal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+
+            <div class="p-6 md:p-8 space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex items-center justify-center">
+                  <img src="{{ default_photo_url }}" class="w-full h-48 object-cover" alt="Event Photo" height="60%" width="40%">
+                </div>
+                <div class="space-y-4">
+                  <h4 class="text-2xl font-semibold text-gray-900 dark:text-white">Why Focus on Handwriting?</h4>
+                  <p class="text-lg text-gray-600 dark:text-gray-300">
+                    Good handwriting is more than just aesthetics; it's a fundamental skill that enhances learning,
+                    memory retention, and self-expression. Proper penmanship combines motor skills, concentration, and
+                    artistic expression.
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-8">
+                <h4 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Benefits of Good Handwriting</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div class="p-6 bg-gray-50 rounded-lg dark:bg-gray-600">
+                    <h5 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Better Learning</h5>
+                    <p class="text-gray-600 dark:text-gray-300">Improves memory retention and cognitive development
+                      through physical writing.</p>
+                  </div>
+                  <div class="p-6 bg-gray-50 rounded-lg dark:bg-gray-600">
+                    <h5 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Motor Skills</h5>
+                    <p class="text-gray-600 dark:text-gray-300">Develops fine motor skills and hand-eye coordination.
+                    </p>
+                  </div>
+                  <div class="p-6 bg-gray-50 rounded-lg dark:bg-gray-600">
+                    <h5 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Self Expression</h5>
+                    <p class="text-gray-600 dark:text-gray-300">Enables creative expression and personal style
+                      development.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex items-center justify-end p-6 md:p-8 border-t border-gray-200 rounded-b dark:border-gray-600 space-x-4">
+              <button data-modal-hide="handwriting-modal" type="button"
+                class="py-3 px-8 text-lg font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Abacus Modal -->
+      <div id="abacus-modal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-screen bg-black bg-opacity-50">
+        <div class="relative p-4 w-full max-w-6xl mx-auto">
+          <!-- Modal content -->
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-6 md:p-8 border-b rounded-t dark:border-gray-600">
+              <h3 class="text-3xl font-semibold text-gray-900 dark:text-white">
+                Understanding the Abacus: A Timeless Tool for Mathematics
+              </h3>
+              <button type="button"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="abacus-modal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="p-6 md:p-8 space-y-6">
+              <!-- Image and Introduction Section -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex items-center justify-center">
+                  <img src="{{ default_photo_url }}" class="w-full h-48 object-cover" alt="Event Photo" height="60%" width="40%">
+                </div>
+                <div class="space-y-4">
+                  <h4 class="text-2xl font-semibold text-gray-900 dark:text-white">What is an Abacus?</h4>
+                  <p class="text-lg text-gray-600 dark:text-gray-300">
+                    The abacus is one of humanity's oldest calculating tools, dating back to ancient civilizations. This
+                    elegant device consists of beads or counters arranged on rods or wires within a frame, enabling
+                    quick mathematical calculations through physical manipulation.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Benefits Section -->
+              <div class="mt-8">
+                <h4 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Benefits of Learning Abacus</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div class="p-6 bg-gray-50 rounded-lg dark:bg-gray-600">
+                    <h5 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Mental Math Skills</h5>
+                    <p class="text-gray-600 dark:text-gray-300">Enhances calculation speed and accuracy while developing
+                      strong mental arithmetic abilities.</p>
+                  </div>
+                  <div class="p-6 bg-gray-50 rounded-lg dark:bg-gray-600">
+                    <h5 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Cognitive Development</h5>
+                    <p class="text-gray-600 dark:text-gray-300">Improves concentration, memory, and problem-solving
+                      capabilities through hands-on learning.</p>
+                  </div>
+                  <div class="p-6 bg-gray-50 rounded-lg dark:bg-gray-600">
+                    <h5 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Visual Learning</h5>
+                    <p class="text-gray-600 dark:text-gray-300">Provides a tangible way to understand mathematical
+                      concepts through visual and kinesthetic learning.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div
+              class="flex items-center justify-end p-6 md:p-8 border-t border-gray-200 rounded-b dark:border-gray-600 space-x-4">
+              <button data-modal-hide="abacus-modal" type="button"
+                class="py-3 px-8 text-lg font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          // Function to toggle modal
+          function toggleModal(modalId, show) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+              if (show) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+              } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+              }
+            }
+          }
+
+          // Open modal - handle all toggle buttons
+          const openButtons = document.querySelectorAll('[data-modal-toggle]');
+          openButtons.forEach(button => {
+            button.addEventListener('click', function () {
+              const modalId = this.getAttribute('data-modal-toggle');
+              toggleModal(modalId, true);
+            });
+          });
+
+          // Close modal - handle all close buttons
+          const closeButtons = document.querySelectorAll('[data-modal-hide]');
+          closeButtons.forEach(button => {
+            button.addEventListener('click', function () {
+              const modalId = this.getAttribute('data-modal-hide');
+              toggleModal(modalId, false);
+            });
+          });
+
+          // Close modal when clicking outside
+          const modals = document.querySelectorAll('[id$="-modal"]');
+          modals.forEach(modal => {
+            modal.addEventListener('click', function (event) {
+              if (event.target === this) {
+                toggleModal(this.id, false);
+              }
+            });
+          });
+        });
+      </script>
+
+      <!-- Vedic Mathematics -->
+      <div
+        class="bg-white shadow-md rounded-lg p-6 border-t-4 border-orange-500 overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <p class="text-left text-5xl pb-5">📐</p>
+        <h3 class="text-left text-xl font-semibold text-gray-800">Vedic Mathematics</h3>
+        <p class="text-left text-gray-600 mt-3">
+          Ancient Indian system for faster mathematical calculations
+        </p>
+        <ul class="text-left mt-4 text-gray-600 space-y-2 p-2">
+          <li>✔ Quick Calculation</li>
+          <li>✔ Vedic Sutras</li>
+          <li>✔ Problem Solving</li>
+        </ul>
+        <button data-modal-target="vedic-modal" data-modal-toggle="vedic-modal"
+          class="bg-orange-500 text-white px-5 py-3 rounded-md mt-5 w-full hover:bg-orange-600" type="button">
+          Learn More
+        </button>
+      </div>
+
+      <!-- Handwriting Excellence -->
+      <div
+        class="bg-white shadow-md rounded-lg p-6 border-t-4 border-orange-500 overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <p class="text-left text-5xl pb-5">✍️</p>
+        <h3 class="text-left text-xl font-semibold text-gray-800">Handwriting Excellence</h3>
+        <p class="text-left text-gray-600 mt-3">
+          Develop beautiful and legible handwriting skills with ease
+        </p>
+        <ul class="text-left mt-4 text-gray-600 space-y-2 p-2">
+          <li>✔ Proper Technique</li>
+          <li>✔ Style Development</li>
+          <li>✔ Speed Writing</li>
+        </ul>
+        <button data-modal-target="handwriting-modal" data-modal-toggle="handwriting-modal"
+          class="bg-orange-500 text-white px-5 py-3 rounded-md mt-5 w-full hover:bg-orange-600" type="button">
+          Learn More
+        </button>
+      </div>
     </div>
-</main>
+  </section>
+</div>
+<!-- 2nd section ends here -->
 
-<script>
-    function updateImageClass() {
-        var img = document.getElementById('eventPhoto');
-        if (window.innerWidth < 992) {  // Bootstrap's breakpoint for large devices
-            img.classList.add('img-fluid');
-        } else {
-            img.classList.remove('img-fluid');
-        }
-    }
 
-    // Initial check
-    updateImageClass();
+<!-- 3rd section starts here -->
+<div class="bg-gray-900 text-white">
+  <section class="text-center py-16">
+    <h2 class="text-3xl font-bold">Why Choose Propath Academy?</h2>
+    <p class="text-gray-300 my-4">
+      Transform your child's learning journey with our comprehensive benefits
+    </p>
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 px-4">
+      <!-- Enhanced Mental Agility -->
+      <div
+        class="bg-gray-800 rounded-lg p-6 shadow-lg overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <p class="text-left text-5xl pb-6">⚡</p>
+        <h3 class="text-left text-xl font-bold pb-2">Enhanced Mental Agility</h3>
+        <p class="text-left text-gray-300 mt-2 pb-3 pt-1">
+          Develop quick thinking and improved mental calculation abilities through specialized training techniques.
+        </p>
+      </div>
 
-    // Update on window resize
-    window.addEventListener('resize', updateImageClass);
-</script>
+      <!-- Improved Concentration -->
+      <div
+        class="bg-gray-800 rounded-lg p-6 shadow-lg overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <p class="text-left text-5xl pb-6">💡</p>
+        <h3 class="text-left text-xl font-bold pb-2">Improved Concentration</h3>
+        <p class="text-left text-gray-300 mt-2 pb-3 pt-1">
+          Build lasting focus and attention span through engaging mental exercises and activities.
+        </p>
+      </div>
 
+      <!-- Academic Excellence -->
+      <div
+        class="bg-gray-800 rounded-lg p-6 shadow-lg overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <p class="text-left text-5xl pb-6">🥇</p>
+        <h3 class="text-left text-xl font-bold pb-2">Academic Excellence</h3>
+        <p class="text-left text-gray-300 mt-2 pb-3 pt-1">
+          Witness improved academic performance and better grades across all subjects.
+        </p>
+      </div>
+
+      <!-- Confidence Building -->
+      <div
+        class="bg-gray-800 rounded-lg p-6 shadow-lg overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <p class="text-left text-5xl pb-6">🌟</p>
+        <h3 class="text-left text-xl font-bold pb-2">Confidence Building</h3>
+        <p class="text-left text-gray-300 mt-2 pb-3 pt-1">
+          Watch your child's self-confidence grow with every achievement and milestone.
+        </p>
+      </div>
+
+      <!-- Progressive Learning -->
+      <div
+        class="bg-gray-800 rounded-lg p-6 shadow-lg overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <p class="text-left text-5xl pb-6">📈</p>
+        <h3 class="text-left text-xl font-bold pb-2">Progressive Learning</h3>
+        <p class="text-left text-gray-300 mt-2 pb-3 pt-1">
+          Structured curriculum ensures steady progress and continuous skill development.
+        </p>
+      </div>
+
+      <!-- Individual Attention -->
+      <div
+        class="bg-gray-800 rounded-lg p-6 shadow-lg overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <p class="text-left text-5xl pb-6">👁️</p>
+        <h3 class="text-left text-xl font-bold pb-2">Individual Attention</h3>
+        <p class="text-left text-gray-300 mt-2 pb-3 pt-1">
+          Personalized guidance and attention to ensure optimal learning outcomes.
+        </p>
+      </div>
+  </section>
+  <div class="flex justify-center mb-14">
+    <button onclick="start()"
+      class="bg-orange-500 text-white font-semibold text-lg px-16 py-4 rounded-md mt-5 hover:bg-orange-600">
+      Start Learning Today
+  </div>
+</div>
+<!-- 3rd section ends here -->
+
+
+<!-- 4th section Starts here-->
+<section class="bg-white py-16 ">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-gray-800">Our Impact in Numbers</h2>
+    <p class="text-gray-600 mt-4 text-lg pb-2">
+      Transforming education through measurable results
+    </p>
+
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Card 1 -->
+      <div
+        class="bg-orange-50 p-8 rounded-lg shadow-md overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <div class="flex justify-center items-center h-12 w-12 bg-orange-100 text-orange-500 rounded-full mx-auto">
+          <span class="text-2xl font-bold">👩‍🎓</span>
+        </div>
+        <h3 class="mt-6 text-4xl font-extrabold text-orange-500">1500</h3>
+        <p class="mt-2 text-gray-700">Students Enrolled</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div
+        class="bg-orange-50 p-8 rounded-lg shadow-md overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <div class="flex justify-center items-center h-12 w-12 bg-orange-100 text-orange-500 rounded-full mx-auto">
+          <span class="text-2xl font-bold">✔️</span>
+        </div>
+        <h3 class="mt-6 text-4xl font-extrabold text-orange-500">95%</h3>
+        <p class="mt-2 text-gray-700">Success Rate %</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div
+        class="bg-orange-50 p-8 rounded-lg shadow-md overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <div class="flex justify-center items-center h-12 w-12 bg-orange-100 text-orange-500 rounded-full mx-auto">
+          <span class="text-2xl font-bold">🏫</span>
+        </div>
+        <h3 class="mt-6 text-4xl font-extrabold text-orange-500">25</h3>
+        <p class="mt-2 text-gray-700">Certified Teachers</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div
+        class="bg-orange-50 p-8 rounded-lg shadow-md overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <div class="flex justify-center items-center h-12 w-12 bg-orange-100 text-orange-500 rounded-full mx-auto">
+          <span class="text-2xl font-bold">⏳</span>
+        </div>
+        <h3 class="mt-6 text-4xl font-extrabold text-orange-500">10</h3>
+        <p class="mt-2 text-gray-700">Years of Excellence</p>
+      </div>
+    </div>
+    <div id="events"></div>
+
+  </div>
+</section>
+<!-- 4th section Ends here-->
+
+
+<!-- 5th section starts here-->
+<section class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-center mb-4">Recent Events & Activities</h2>
+    <p class="text-center text-gray-400 mb-8 pb-8">Stay updated with our latest workshops and competitions</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-14 pb-6">
+      <!-- Event Card 1 -->
+      <div
+        class="text-left bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+        {% if event1.photo %}
+        <img src="{{ event1.photo.url }}" alt="National Abacus Championship" class="w-full h-48 object-cover">
+        {% else %}
+        <img src="{{ default_photo_url }}" class="w-full h-48 object-cover" alt="Event Photo" height="60%" width="40%">
+        {% endif %}
+        <div class="p-6">
+
+          <h3 class="text-xl font-bold mt-4">{{event1.name}}</h3>
+          <p class="text-gray-400 mt-2">{{event1.details}}</p>
+          <div class="mt-4 flex items-center text-gray-400">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3M3 13h18M5 21h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z"></path>
+            </svg>
+            <span>{{event1.date}}</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event Card 2 -->
+      <div
+        class="text-left bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+        {% if event2.photo %}
+        <img src="{{ event2.photo.url }}" alt="Speed Writing Workshop" class="w-full h-48 object-cover">
+        {% else %}
+        <img src="{{ default_photo_url }}" class="w-full h-48 object-cover" alt="Event Photo" height="60%" width="40%">
+        {% endif %}
+        <div class="p-6">
+          <h3 class="text-xl font-bold mt-4">{{event2.name}}</h3>
+          <p class="text-gray-400 mt-2">{{event2.details}}</p>
+          <div class="mt-4 flex items-center text-gray-400">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3M3 13h18M5 21h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z"></path>
+            </svg>
+            <span>{{event2.date}}</span>
+          </div>
+        </div>
+      </div>
+      <!-- Event Card 3 -->
+      <div
+        class="text-left bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+        {% if event3.photo %}
+        <img src="{{ event3.photo.url }}" alt="Vedic Mathematics Seminar" class="w-full h-48 object-cover">
+        {% else %}
+        <img src="{{ default_photo_url }}" class="w-full h-48 object-cover" alt="Event Photo" height="60%" width="40%">
+        {% endif %}
+        <div class="p-6">
+          <h3 class="text-xl font-bold mt-4">{{event3.name}}</h3>
+          <p class="text-gray-400 mt-2">{{event3.details}}</p>
+          <div class="mt-4 flex items-center text-gray-400">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3M3 13h18M5 21h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z"></path>
+            </svg>
+            <span>{{event3.date}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5th section ends here-->
+
+
+<!-- 6th section starts here -->
+<section class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-4 text-center py-2">
+    <h1 class="text-3xl font-bold text-gray-800">What Parents Say</h1>
+    <p class="text-gray-600 mt-4 text-lg pb-10">Real experiences from our student's parents</p>
+    <!-- card 1 -->
+    <div class="bg-gray-100 p-6 rounded-lg shadow mb-6">
+      <div class="flex items-center mb-4">
+        <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg">
+          {{ testimonial1.name|slice:":1"|upper }}
+        </div>
+        <div class="ml-4">
+          <h2 class="text-lg font-semibold text-gray-800">{{testimonial1.name}}</h2>
+          <p class="text-sm text-gray-500">{{testimonial1.designation}}</p>
+        </div>
+      </div>
+      <p class="text-gray-700 text-left italic">"{{testimonial1.quote}}"</p>
+    </div>
+
+    <!-- card 2 -->
+    <div class="bg-gray-100 p-6 rounded-lg shadow mb-6">
+      <div class="flex items-center mb-4">
+        <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg">
+          {{ testimonial2.name|slice:":1"|upper }}
+        </div>
+        <div class="ml-4">
+          <h2 class="text-lg font-semibold text-gray-800">{{testimonial2.name}}</h2>
+          <p class="text-sm text-gray-500">{{testimonial2.designation}}</p>
+        </div>
+      </div>
+      <p class="text-gray-700 text-left italic">"{{testimonial2.quote}}"</p>
+    </div>
+    <div id="about-us"></div>
+
+  </div>
+</section>
+<!-- 6th section ends here -->
+
+<!-- 7th section starts here -->
+<section class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto p-4 lg:flex sm:justify-center">
+    <div class="lg:pr-16 lg:mr-2">
+      <div class="lg:text-left text-center">
+        <p class="text-orange-500 text-lg font-semibold">About Us</p>
+        <h1 class="text-3xl lg:text-3xl font-bold mt-3">
+          Nurturing Young Minds for a Brighter Future
+        </h1>
+        <p class="text-gray-400 text-base mt-4 max-w-2xl mx-auto lg:mx-0">
+          At Propath Academy, we believe in empowering students with essential skills that go beyond traditional
+          academics.
+          Our specialized programs in Abacus, Vedic Mathematics, and Handwriting are designed to enhance cognitive
+          abilities
+          and boost academic performance.
+        </p>
+      </div>
+
+      <!-- Features -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+        <!-- Feature 1 -->
+        <div class="flex items-start">
+          <div class="bg-orange-500 text-white p-3 rounded-lg">
+            <span class="text-xl">👩‍🎓</span>
+          </div>
+          <div class="ml-4">
+            <h3 class="text-lg font-bold">Expert Teachers</h3>
+            <p class="text-gray-400">Certified professionals with years of experience</p>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="flex items-start">
+          <div class="bg-orange-500 text-white p-3 rounded-lg">
+            <span class="text-lg">✔️</span>
+          </div>
+          <div class="ml-4">
+            <h3 class="text-lg font-bold">Proven Methods</h3>
+            <p class="text-gray-400">Research-backed teaching techniques</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 mt-12">
+        <a href="https://www.youtube.com/embed/vxtIOgcdfmU" target="_blank"
+          class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg text-center font-semibold">
+          Watch Our Story
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+      <!-- Card 1 -->
+      <div class="relative">
+        <div class="absolute -top-2 -left-2 bg-orange-500 rounded-lg h-full w-full transform rotate-3"></div>
+        <div class="relative bg-gray-800 rounded-lg p-6 shadow-lg">
+          <span class="text-5xl">🧮</span>
+          <h3 class="text-lg font-bold mt-7">Mental Math</h3>
+          <p class="text-gray-400 mt-2">Speed calculations made easy.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="relative">
+        <div class="absolute -top-2 -left-2 bg-orange-500 rounded-lg h-full w-full transform rotate-3"></div>
+        <div class="relative bg-gray-800 rounded-lg p-6 shadow-lg">
+          <span class="text-5xl">📚</span>
+          <h3 class="text-lg font-bold mt-7">Handwriting</h3>
+          <p class="text-gray-400 mt-2">Improved better learning.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="relative">
+        <div class="absolute -top-2 -left-2 bg-orange-500 rounded-lg h-full w-full transform rotate-3"></div>
+        <div class="relative bg-gray-800 rounded-lg p-6 shadow-lg">
+          <span class="text-5xl">✍️</span>
+          <h3 class="text-lg font-bold pt-8">Vedic Math</h3>
+          <p class="text-gray-400 mt-2">Simplify complex math easily.</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="relative">
+        <div class="absolute -top-2 -left-2 bg-orange-500 rounded-lg h-full w-full transform rotate-3"></div>
+        <div class="relative bg-gray-800 rounded-lg p-6 shadow-lg">
+          <span class="text-5xl">🎯</span>
+          <h3 class="text-lg font-bold pt-4">Focus</h3>
+          <p class="text-gray-400 mt-2">Enhanced concentration for better performance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 7th section ends here -->
+
+
+<!-- 8th section starts here -->
+<section class="bg-white py-16">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-extrabold text-gray-900">Frequently Asked Questions</h2>
+    <p class="mt-4 text-gray-600">
+      Find answers to common questions about our programs
+    </p>
+
+    <div class="mt-12 space-y-4">
+      <!-- FAQ Item 1 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button
+          class="w-full flex justify-between items-center px-6 py-4 text-left text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          type="button" onclick="toggleAnswer(this)">
+          <span>What age groups do you cater to?</span>
+          <span class="transform rotate-0 transition-transform">&#x25BC;</span>
+        </button>
+        <div class="hidden px-6 py-4 bg-gray-50 text-gray-700">
+          We cater to children aged 6 to 14 years old, providing age-specific training tailored to their learning pace.
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button
+          class="w-full flex justify-between items-center px-6 py-4 text-left text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          type="button" onclick="toggleAnswer(this)">
+          <span>How long are the courses?</span>
+          <span class="transform rotate-0 transition-transform">&#x25BC;</span>
+        </button>
+        <div class="hidden px-6 py-4 bg-gray-50 text-gray-700">
+          Courses typically last 3 to 6 months, depending on the chosen program and the student's progress.
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button
+          class="w-full flex justify-between items-center px-6 py-4 text-left text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          type="button" onclick="toggleAnswer(this)">
+          <span>Are the classes online or offline?</span>
+          <span class="transform rotate-0 transition-transform">&#x25BC;</span>
+        </button>
+        <div class="hidden px-6 py-4 bg-gray-50 text-gray-700">
+          We offer both online and offline classes to provide flexibility and accessibility for all learners.
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button
+          class="w-full flex justify-between items-center px-6 py-4 text-left text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          type="button" onclick="toggleAnswer(this)">
+          <span>What materials are provided?</span>
+          <span class="transform rotate-0 transition-transform">&#x25BC;</span>
+        </button>
+        <div class="hidden px-6 py-4 bg-gray-50 text-gray-700">
+          We provide comprehensive course materials, including workbooks, practice sheets, and access to online
+          resources.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="enquiry"></div>
+</section>
+
+<!-- 8th section starts here -->
+
+<!-- 9th Section ends here -->
+
+<section class="bg-gray-900 p-16 mt-6">
+  <div class="bg-orange-500 max-w-7xl mx-auto p-16 rounded-3xl grid grid-cols-1 lg:grid-cols-2 gap-8 text-white">
+    <!-- Left Section -->
+    <div class="pr-4">
+      <h2 class="text-4xl font-extrabold">Start Your Journey Today!</h2>
+      <p class="mt-4 text-lg">
+        Transform your child's learning experience with our specialized programs.
+      </p>
+      <form class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Name" name="name"
+          class="w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white" />
+        <div class="flex items-center space-x-2">
+          <select name="countryCode" id=""
+            class="w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white">
+            <option data-countryCode="IN" value="91" Selected>India (+91)</option>
+            <optgroup label="Other countries">
+              <option data-countryCode="DZ" value="213">Algeria (+213)</option>
+              <option data-countryCode="AD" value="376">Andorra (+376)</option>
+              <option data-countryCode="AO" value="244">Angola (+244)</option>
+              <option data-countryCode="AI" value="1264">Anguilla (+1264)</option>
+              <option data-countryCode="AG" value="1268">Antigua &amp; Barbuda (+1268)</option>
+              <option data-countryCode="AR" value="54">Argentina (+54)</option>
+              <option data-countryCode="AM" value="374">Armenia (+374)</option>
+              <option data-countryCode="AW" value="297">Aruba (+297)</option>
+              <option data-countryCode="AU" value="61">Australia (+61)</option>
+              <option data-countryCode="AT" value="43">Austria (+43)</option>
+              <option data-countryCode="AZ" value="994">Azerbaijan (+994)</option>
+              <option data-countryCode="BS" value="1242">Bahamas (+1242)</option>
+              <option data-countryCode="BH" value="973">Bahrain (+973)</option>
+              <option data-countryCode="BD" value="880">Bangladesh (+880)</option>
+              <option data-countryCode="BB" value="1246">Barbados (+1246)</option>
+              <option data-countryCode="BY" value="375">Belarus (+375)</option>
+              <option data-countryCode="BE" value="32">Belgium (+32)</option>
+              <option data-countryCode="BZ" value="501">Belize (+501)</option>
+              <option data-countryCode="BJ" value="229">Benin (+229)</option>
+              <option data-countryCode="BM" value="1441">Bermuda (+1441)</option>
+              <option data-countryCode="BT" value="975">Bhutan (+975)</option>
+              <option data-countryCode="BO" value="591">Bolivia (+591)</option>
+              <option data-countryCode="BA" value="387">Bosnia Herzegovina (+387)</option>
+              <option data-countryCode="BW" value="267">Botswana (+267)</option>
+              <option data-countryCode="BR" value="55">Brazil (+55)</option>
+              <option data-countryCode="BN" value="673">Brunei (+673)</option>
+              <option data-countryCode="BG" value="359">Bulgaria (+359)</option>
+              <option data-countryCode="BF" value="226">Burkina Faso (+226)</option>
+              <option data-countryCode="BI" value="257">Burundi (+257)</option>
+              <option data-countryCode="KH" value="855">Cambodia (+855)</option>
+              <option data-countryCode="CM" value="237">Cameroon (+237)</option>
+              <option data-countryCode="CA" value="1">Canada (+1)</option>
+              <option data-countryCode="CV" value="238">Cape Verde Islands (+238)</option>
+              <option data-countryCode="KY" value="1345">Cayman Islands (+1345)</option>
+              <option data-countryCode="CF" value="236">Central African Republic (+236)</option>
+              <option data-countryCode="CL" value="56">Chile (+56)</option>
+              <option data-countryCode="CN" value="86">China (+86)</option>
+              <option data-countryCode="CO" value="57">Colombia (+57)</option>
+              <option data-countryCode="KM" value="269">Comoros (+269)</option>
+              <option data-countryCode="CG" value="242">Congo (+242)</option>
+              <option data-countryCode="CK" value="682">Cook Islands (+682)</option>
+              <option data-countryCode="CR" value="506">Costa Rica (+506)</option>
+              <option data-countryCode="HR" value="385">Croatia (+385)</option>
+              <option data-countryCode="CU" value="53">Cuba (+53)</option>
+              <option data-countryCode="CY" value="90392">Cyprus North (+90392)</option>
+              <option data-countryCode="CY" value="357">Cyprus South (+357)</option>
+              <option data-countryCode="CZ" value="42">Czech Republic (+42)</option>
+              <option data-countryCode="DK" value="45">Denmark (+45)</option>
+              <option data-countryCode="DJ" value="253">Djibouti (+253)</option>
+              <option data-countryCode="DM" value="1809">Dominica (+1809)</option>
+              <option data-countryCode="DO" value="1809">Dominican Republic (+1809)</option>
+              <option data-countryCode="EC" value="593">Ecuador (+593)</option>
+              <option data-countryCode="EG" value="20">Egypt (+20)</option>
+              <option data-countryCode="SV" value="503">El Salvador (+503)</option>
+              <option data-countryCode="GQ" value="240">Equatorial Guinea (+240)</option>
+              <option data-countryCode="ER" value="291">Eritrea (+291)</option>
+              <option data-countryCode="EE" value="372">Estonia (+372)</option>
+              <option data-countryCode="ET" value="251">Ethiopia (+251)</option>
+              <option data-countryCode="FK" value="500">Falkland Islands (+500)</option>
+              <option data-countryCode="FO" value="298">Faroe Islands (+298)</option>
+              <option data-countryCode="FJ" value="679">Fiji (+679)</option>
+              <option data-countryCode="FI" value="358">Finland (+358)</option>
+              <option data-countryCode="FR" value="33">France (+33)</option>
+              <option data-countryCode="GF" value="594">French Guiana (+594)</option>
+              <option data-countryCode="PF" value="689">French Polynesia (+689)</option>
+              <option data-countryCode="GA" value="241">Gabon (+241)</option>
+              <option data-countryCode="GM" value="220">Gambia (+220)</option>
+              <option data-countryCode="GE" value="7880">Georgia (+7880)</option>
+              <option data-countryCode="DE" value="49">Germany (+49)</option>
+              <option data-countryCode="GH" value="233">Ghana (+233)</option>
+              <option data-countryCode="GI" value="350">Gibraltar (+350)</option>
+              <option data-countryCode="GR" value="30">Greece (+30)</option>
+              <option data-countryCode="GL" value="299">Greenland (+299)</option>
+              <option data-countryCode="GD" value="1473">Grenada (+1473)</option>
+              <option data-countryCode="GP" value="590">Guadeloupe (+590)</option>
+              <option data-countryCode="GU" value="671">Guam (+671)</option>
+              <option data-countryCode="GT" value="502">Guatemala (+502)</option>
+              <option data-countryCode="GN" value="224">Guinea (+224)</option>
+              <option data-countryCode="GW" value="245">Guinea - Bissau (+245)</option>
+              <option data-countryCode="GY" value="592">Guyana (+592)</option>
+              <option data-countryCode="HT" value="509">Haiti (+509)</option>
+              <option data-countryCode="HN" value="504">Honduras (+504)</option>
+              <option data-countryCode="HK" value="852">Hong Kong (+852)</option>
+              <option data-countryCode="HU" value="36">Hungary (+36)</option>
+              <option data-countryCode="IS" value="354">Iceland (+354)</option>
+              <option data-countryCode="IN" value="91">India (+91)</option>
+              <option data-countryCode="ID" value="62">Indonesia (+62)</option>
+              <option data-countryCode="IR" value="98">Iran (+98)</option>
+              <option data-countryCode="IQ" value="964">Iraq (+964)</option>
+              <option data-countryCode="IE" value="353">Ireland (+353)</option>
+              <option data-countryCode="IL" value="972">Israel (+972)</option>
+              <option data-countryCode="IT" value="39">Italy (+39)</option>
+              <option data-countryCode="JM" value="1876">Jamaica (+1876)</option>
+              <option data-countryCode="JP" value="81">Japan (+81)</option>
+              <option data-countryCode="JO" value="962">Jordan (+962)</option>
+              <option data-countryCode="KZ" value="7">Kazakhstan (+7)</option>
+              <option data-countryCode="KE" value="254">Kenya (+254)</option>
+              <option data-countryCode="KI" value="686">Kiribati (+686)</option>
+              <option data-countryCode="KP" value="850">Korea North (+850)</option>
+              <option data-countryCode="KR" value="82">Korea South (+82)</option>
+              <option data-countryCode="KW" value="965">Kuwait (+965)</option>
+              <option data-countryCode="KG" value="996">Kyrgyzstan (+996)</option>
+              <option data-countryCode="LA" value="856">Laos (+856)</option>
+              <option data-countryCode="LV" value="371">Latvia (+371)</option>
+              <option data-countryCode="LB" value="961">Lebanon (+961)</option>
+              <option data-countryCode="LS" value="266">Lesotho (+266)</option>
+              <option data-countryCode="LR" value="231">Liberia (+231)</option>
+              <option data-countryCode="LY" value="218">Libya (+218)</option>
+              <option data-countryCode="LI" value="417">Liechtenstein (+417)</option>
+              <option data-countryCode="LT" value="370">Lithuania (+370)</option>
+              <option data-countryCode="LU" value="352">Luxembourg (+352)</option>
+              <option data-countryCode="MO" value="853">Macao (+853)</option>
+              <option data-countryCode="MK" value="389">Macedonia (+389)</option>
+              <option data-countryCode="MG" value="261">Madagascar (+261)</option>
+              <option data-countryCode="MW" value="265">Malawi (+265)</option>
+              <option data-countryCode="MY" value="60">Malaysia (+60)</option>
+              <option data-countryCode="MV" value="960">Maldives (+960)</option>
+              <option data-countryCode="ML" value="223">Mali (+223)</option>
+              <option data-countryCode="MT" value="356">Malta (+356)</option>
+              <option data-countryCode="MH" value="692">Marshall Islands (+692)</option>
+              <option data-countryCode="MQ" value="596">Martinique (+596)</option>
+              <option data-countryCode="MR" value="222">Mauritania (+222)</option>
+              <option data-countryCode="YT" value="269">Mayotte (+269)</option>
+              <option data-countryCode="MX" value="52">Mexico (+52)</option>
+              <option data-countryCode="FM" value="691">Micronesia (+691)</option>
+              <option data-countryCode="MD" value="373">Moldova (+373)</option>
+              <option data-countryCode="MC" value="377">Monaco (+377)</option>
+              <option data-countryCode="MN" value="976">Mongolia (+976)</option>
+              <option data-countryCode="MS" value="1664">Montserrat (+1664)</option>
+              <option data-countryCode="MA" value="212">Morocco (+212)</option>
+              <option data-countryCode="MZ" value="258">Mozambique (+258)</option>
+              <option data-countryCode="MN" value="95">Myanmar (+95)</option>
+              <option data-countryCode="NA" value="264">Namibia (+264)</option>
+              <option data-countryCode="NR" value="674">Nauru (+674)</option>
+              <option data-countryCode="NP" value="977">Nepal (+977)</option>
+              <option data-countryCode="NL" value="31">Netherlands (+31)</option>
+              <option data-countryCode="NC" value="687">New Caledonia (+687)</option>
+              <option data-countryCode="NZ" value="64">New Zealand (+64)</option>
+              <option data-countryCode="NI" value="505">Nicaragua (+505)</option>
+              <option data-countryCode="NE" value="227">Niger (+227)</option>
+              <option data-countryCode="NG" value="234">Nigeria (+234)</option>
+              <option data-countryCode="NU" value="683">Niue (+683)</option>
+              <option data-countryCode="NF" value="672">Norfolk Islands (+672)</option>
+              <option data-countryCode="NP" value="670">Northern Marianas (+670)</option>
+              <option data-countryCode="NO" value="47">Norway (+47)</option>
+              <option data-countryCode="OM" value="968">Oman (+968)</option>
+              <option data-countryCode="PW" value="680">Palau (+680)</option>
+              <option data-countryCode="PA" value="507">Panama (+507)</option>
+              <option data-countryCode="PG" value="675">Papua New Guinea (+675)</option>
+              <option data-countryCode="PY" value="595">Paraguay (+595)</option>
+              <option data-countryCode="PE" value="51">Peru (+51)</option>
+              <option data-countryCode="PH" value="63">Philippines (+63)</option>
+              <option data-countryCode="PL" value="48">Poland (+48)</option>
+              <option data-countryCode="PT" value="351">Portugal (+351)</option>
+              <option data-countryCode="PR" value="1787">Puerto Rico (+1787)</option>
+              <option data-countryCode="QA" value="974">Qatar (+974)</option>
+              <option data-countryCode="RE" value="262">Reunion (+262)</option>
+              <option data-countryCode="RO" value="40">Romania (+40)</option>
+              <option data-countryCode="RU" value="7">Russia (+7)</option>
+              <option data-countryCode="RW" value="250">Rwanda (+250)</option>
+              <option data-countryCode="SM" value="378">San Marino (+378)</option>
+              <option data-countryCode="ST" value="239">Sao Tome &amp; Principe (+239)</option>
+              <option data-countryCode="SA" value="966">Saudi Arabia (+966)</option>
+              <option data-countryCode="SN" value="221">Senegal (+221)</option>
+              <option data-countryCode="CS" value="381">Serbia (+381)</option>
+              <option data-countryCode="SC" value="248">Seychelles (+248)</option>
+              <option data-countryCode="SL" value="232">Sierra Leone (+232)</option>
+              <option data-countryCode="SG" value="65">Singapore (+65)</option>
+              <option data-countryCode="SK" value="421">Slovak Republic (+421)</option>
+              <option data-countryCode="SI" value="386">Slovenia (+386)</option>
+              <option data-countryCode="SB" value="677">Solomon Islands (+677)</option>
+              <option data-countryCode="SO" value="252">Somalia (+252)</option>
+              <option data-countryCode="ZA" value="27">South Africa (+27)</option>
+              <option data-countryCode="ES" value="34">Spain (+34)</option>
+              <option data-countryCode="LK" value="94">Sri Lanka (+94)</option>
+              <option data-countryCode="SH" value="290">St. Helena (+290)</option>
+              <option data-countryCode="KN" value="1869">St. Kitts (+1869)</option>
+              <option data-countryCode="SC" value="1758">St. Lucia (+1758)</option>
+              <option data-countryCode="SD" value="249">Sudan (+249)</option>
+              <option data-countryCode="SR" value="597">Suriname (+597)</option>
+              <option data-countryCode="SZ" value="268">Swaziland (+268)</option>
+              <option data-countryCode="SE" value="46">Sweden (+46)</option>
+              <option data-countryCode="CH" value="41">Switzerland (+41)</option>
+              <option data-countryCode="SI" value="963">Syria (+963)</option>
+              <option data-countryCode="TW" value="886">Taiwan (+886)</option>
+              <option data-countryCode="TJ" value="7">Tajikstan (+7)</option>
+              <option data-countryCode="TH" value="66">Thailand (+66)</option>
+              <option data-countryCode="TG" value="228">Togo (+228)</option>
+              <option data-countryCode="TO" value="676">Tonga (+676)</option>
+              <option data-countryCode="TT" value="1868">Trinidad &amp; Tobago (+1868)</option>
+              <option data-countryCode="TN" value="216">Tunisia (+216)</option>
+              <option data-countryCode="TR" value="90">Turkey (+90)</option>
+              <option data-countryCode="TM" value="7">Turkmenistan (+7)</option>
+              <option data-countryCode="TM" value="993">Turkmenistan (+993)</option>
+              <option data-countryCode="TC" value="1649">Turks &amp; Caicos Islands (+1649)</option>
+              <option data-countryCode="TV" value="688">Tuvalu (+688)</option>
+              <option data-countryCode="UG" value="256">Uganda (+256)</option>
+              <option data-countryCode="GB" value="44">UK (+44)</option>
+              <option data-countryCode="UA" value="380">Ukraine (+380)</option>
+              <option data-countryCode="AE" value="971">United Arab Emirates (+971)</option>
+              <option data-countryCode="UY" value="598">Uruguay (+598)</option>
+              <option data-countryCode="US" value="1">USA (+1)</option>
+              <option data-countryCode="UZ" value="7">Uzbekistan (+7)</option>
+              <option data-countryCode="VU" value="678">Vanuatu (+678)</option>
+              <option data-countryCode="VA" value="379">Vatican City (+379)</option>
+              <option data-countryCode="VE" value="58">Venezuela (+58)</option>
+              <option data-countryCode="VN" value="84">Vietnam (+84)</option>
+              <option data-countryCode="VG" value="84">Virgin Islands - British (+1284)</option>
+              <option data-countryCode="VI" value="84">Virgin Islands - US (+1340)</option>
+              <option data-countryCode="WF" value="681">Wallis &amp; Futuna (+681)</option>
+              <option data-countryCode="YE" value="969">Yemen (North)(+969)</option>
+              <option data-countryCode="YE" value="967">Yemen (South)(+967)</option>
+              <option data-countryCode="ZM" value="260">Zambia (+260)</option>
+              <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
+            </optgroup>
+          </select>
+          <input type="text" placeholder="Phone" name="phone_number" pattern="[0-9]{1,15}"
+            class="w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white" />
+        </div>
+
+        <input type="email" placeholder="Email Address" name="email"
+          class="w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white" />
+        <select class="px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white" name="type">
+          <option disabled="disabled">Type</option>
+          <option>Student</option>
+          <option>Franchisee</option>
+          <option>Teacher</option>
+        </select>
+        <input type="text" placeholder="City" name="city"
+          class="w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white" />
+        <input type="text" placeholder="PIN" name="pin" pattern="[0-9]{6}"
+          class="w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white" />
+        <input type="text" placeholder="State" name="state"
+          class="w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white" />
+        <input type="text" placeholder="Country" name="country"
+          class="w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white" />
+
+        <button type="submit"
+          class="w-full sm:col-span-2 bg-white text-orange-500 font-bold py-3 rounded-md hover:bg-gray-100">
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <!-- Right Section -->
+    <div class="grid grid-cols-2 gap-6 pl-2">
+      <div
+        class="bg-orange-600 p-6 rounded-2xl shadow-lg overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <span class="text-5xl">🎯</span>
+        <div class="text-2xl font-bold mt-4">Proven Methods</div>
+        <p class="mt-4 text-lg">Research-backed teaching techniques</p>
+      </div>
+      <div
+        class="bg-orange-600 p-6 rounded-2xl shadow-lg overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <span class="text-4xl">👩‍🏫</span>
+        <div class="text-2xl font-bold mt-4">Expert Teachers</div>
+        <p class="mt-4 text-lg">Experienced instructors</p>
+      </div>
+      <div
+        class="bg-orange-600 p-6 rounded-2xl shadow-lg overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <span class="text-4xl">📚</span>
+        <div class="text-2xl font-bold mt-4">Study Materials</div>
+        <p class="mt-4 text-lg">Comprehensive learning resources</p>
+      </div>
+      <div
+        class="bg-orange-600 p-6 rounded-2xl shadow-lg overflow-hidden Transform hover:-translate-y-2 transition-transform  duration-300">
+        <span class="text-4xl">🏆</span>
+        <div class="text-2xl font-bold mt-4">Guaranteed Results</div>
+        <p class="mt-4 text-lg">Proven success record</p>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}

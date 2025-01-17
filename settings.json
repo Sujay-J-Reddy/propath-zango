@@ -1,5 +1,5 @@
 {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "modules": [
         {
             "name": "franchise",
@@ -85,6 +85,6 @@
             "url": "urls"
         }
     ],
-    "app_name":"Propath_Academy",
-    "zango_version":">=0.3.0"
+    "app_name": "Propath_Academy",
+    "zango_version": ">=0.3.0"
 }
