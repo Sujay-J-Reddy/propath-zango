@@ -15,13 +15,21 @@ class KitTable(ModelTable):
     row_actions = [
         {
             "name": "Edit",
-            "key": "edit",
+            "key": "edit_kit",
             "description": "Edit Kit",
             "type": "form",
             "form": KitForm,  # Specify the form to use for editing
             "roles": [
                 "Admin"
             ],  # Specify roles that can perform the action
+        },
+        {
+            "name": "Delete",
+            "key": "delete_kit",
+            "description": "Delete Kit",
+            "type": "simple",
+            "confirmation_message": "Are you sure you want to delete this Kit?",
+            "roles": ["Admin"]
         }
     ]
 
@@ -36,6 +44,16 @@ class KitTable(ModelTable):
             return Q(name__contains=search_term)
         return Q()  
     
+    def process_row_action_delete_kit(self, request, obj):
+        obj.delete()
+        success = True
+        response = {
+            "message": "Successfully deleted Kit",
+        }
+        return success, response
+
+
+    
 class VendorTable(ModelTable):
     name = ModelCol(display_as="Vendor Name", searchable=True, sortable=True)
     contact = ModelCol(display_as="Contact", searchable=True, sortable=True)
@@ -44,13 +62,21 @@ class VendorTable(ModelTable):
     row_actions =[
         {
             "name": "Edit",
-            "key": "edit",
+            "key": "edit_vendor",
             "description": "Edit Vendor",
             "type": "form",
             "form": VendorForm,  # Specify the form to use for editing
             "roles": [
                 "Admin"
             ],  # Specify roles that can perform the action
+        },
+        {
+            "name": "Delete",
+            "key": "delete_vendor",
+            "description": "Delete Vendor",
+            "type": "simple",
+            "confirmation_message": "Are you sure you want to delete this Vendor?",
+            "roles": ["Admin"]
         }
     ]
 
@@ -71,6 +97,14 @@ class VendorTable(ModelTable):
         if modified_id is not None:
             return Q(id=modified_id)
         return Q()
+    
+    def process_row_action_delete_vendor(self, request, obj):
+        obj.delete()
+        success = True
+        response = {
+            "message": "Successfully deleted Vendor",
+        }
+        return success, response
 
 class ItemTable(ModelTable):
     name = ModelCol(display_as="Item Name", searchable=True, sortable=True)
@@ -82,13 +116,21 @@ class ItemTable(ModelTable):
     row_actions = [
         {
             "name": "Edit",
-            "key": "edit",
+            "key": "edit_item",
             "description": "Edit Item",
             "type": "form",
             "form": ItemForm,  # Specify the form to use for editing
             "roles": [
                 "Admin"
             ],  # Specify roles that can perform the action
+        },
+        {
+            "name": "Delete",
+            "key": "delete_item",
+            "description": "Delete Item",
+            "type": "simple",
+            "confirmation_message": "Are you sure you want to delete this Item?",
+            "roles": ["Admin"]
         }
     ]
 
@@ -103,6 +145,15 @@ class ItemTable(ModelTable):
             "kit",
         ]
         card_primary_fields = [ "qty","kit"]
+
+    def process_row_action_delete_item(self, request, obj):
+        obj.delete()
+        success = True
+        response = {
+            "message": "Successfully deleted Item",
+        }
+        return success, response
+        
     
     def kit_getval(self, obj):
         if obj.kit:
@@ -254,9 +305,6 @@ class OrderTable(ModelTable):
             return Q(order_date__contains=search_term)
         return Q()
     
-        
-    
-
 class SchoolOrderTable(OrderTable):
     id = ModelCol(display_as="Order ID", searchable=True, sortable=True)
     school = ModelCol(display_as="School", searchable=True, sortable=True)

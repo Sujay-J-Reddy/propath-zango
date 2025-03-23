@@ -26,6 +26,14 @@ class EventTable(ModelTable):
             "roles": [
                 "Admin"
             ],  # Specify roles that can perform the action
+        },
+        {
+            "name": "Delete",
+            "key": "delete_event",
+            "description": "Delete Event",
+            "type": "simple",
+            "confirmation_message": "Are you sure you want to delete this Event?",      
+            "roles": ["Admin"]
         }
     ]
 
@@ -49,6 +57,14 @@ class EventTable(ModelTable):
         if search_term is not None:
             return Q(details__contains = search_term)
         return Q()
+    
+    def process_row_action_delete_event(self, request, obj):
+        obj.delete()
+        success = True
+        response = {
+            "message": "Successfully deleted Event",
+        }
+        return success, response
     
     
 
@@ -295,6 +311,7 @@ class SchoolTable(ModelTable):
                 "Admin"
             ],  # Specify roles that can perform the action
         }
+        
     ]
 
     class Meta:
@@ -354,6 +371,14 @@ class SchoolStudentTable(ModelTable):
             "roles": [
                 "Admin"
             ],  # Specify roles that can perform the action
+        },
+        {
+            "name": "Delete",
+            "key": "delete_school_student",
+            "description": "Delete School Student",
+            "type": "simple",
+            "confirmation_message": "Are you sure you want to delete this School Student?",
+            "roles": ["Admin"]
         }
     ]
 
@@ -372,10 +397,13 @@ class SchoolStudentTable(ModelTable):
         card_primary_fields = ["school", "course", "programme", "level"]
 
     
-    def can_perform_row_action_edit(self, request, obj):
-        # Implement logic to check if the user can perform the Edit action
-        # Example: Check if the user has the necessary permissions to edit records
-        return True
+    def process_row_action_delete_school_student(self, request, obj):
+        obj.delete()
+        success = True
+        response = {
+            "message": "Successfully deleted School Student",
+        }
+        return success, response
     
     def school_getval(self, obj):
         return f"{obj.school.name}"
@@ -430,6 +458,14 @@ class StatTable(ModelTable):
             "roles": [
                 "Admin"
             ],  
+        },
+        {
+            "name": "Delete",
+            "key": "delete_stat",
+            "description": "Delete Stat",
+            "type": "simple",
+            "confirmation_message": "Are you sure you want to delete this Stat?",
+            "roles": ["Admin"]
         }
     ]
 
@@ -441,6 +477,14 @@ class StatTable(ModelTable):
             "franchises"
         ]
         card_primary_fields = ["students", "teachers", "franchises"]
+
+    def process_row_action_delete_stat(self, request, obj):
+        obj.delete()
+        success = True
+        response = {
+            "message": "Successfully deleted Stat",
+        }
+        return success, response
 
 class TestimonialTable(ModelTable):
     name = ModelCol(display_as="Name",searchable=True,sortable=True)
@@ -457,6 +501,14 @@ class TestimonialTable(ModelTable):
             "roles": [
                 "Admin"
             ],  
+        },
+        {
+            "name": "Delete",
+            "key": "delete_testimonial",
+            "description": "Delete Testimonial",
+            "type": "simple",
+            "confirmation_message": "Are you sure you want to delete this Testimonial?",
+            "roles": ["Admin"]
         }
     ]
 
@@ -469,3 +521,11 @@ class TestimonialTable(ModelTable):
             "date"
         ]
         card_primary_fields = ["designation", "quote"]
+
+    def process_row_action_delete_testimonial(self, request, obj):
+        obj.delete()
+        success = True
+        response = {
+            "message": "Successfully deleted Testimonial",
+        }
+        return success, response
