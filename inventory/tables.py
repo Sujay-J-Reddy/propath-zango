@@ -16,7 +16,7 @@ class KitTable(ModelTable):
     row_actions = [
         {
             "name": "Edit",
-            "key": "edit_kit",
+            "key": "edit",
             "description": "Edit Kit",
             "type": "form",
             "form": KitForm,  # Specify the form to use for editing
@@ -72,7 +72,7 @@ class VendorTable(ModelTable):
     row_actions =[
         {
             "name": "Edit",
-            "key": "edit_vendor",
+            "key": "edit",
             "description": "Edit Vendor",
             "type": "form",
             "form": VendorForm,  # Specify the form to use for editing
@@ -128,21 +128,13 @@ class ItemTable(ModelTable):
     row_actions = [
         {
             "name": "Edit",
-            "key": "edit_item",
+            "key": "edit",
             "description": "Edit Item",
             "type": "form",
             "form": ItemForm,  # Specify the form to use for editing
             "roles": [
                 "Admin"
             ],  # Specify roles that can perform the action
-        },
-        {
-            "name": "Delete",
-            "key": "delete_item",
-            "description": "Delete Item",
-            "type": "simple",
-            "confirmation_message": "Are you sure you want to delete this Item?",
-            "roles": ["Admin"]
         }
     ]
 
@@ -157,15 +149,6 @@ class ItemTable(ModelTable):
             "kit",
         ]
         card_primary_fields = [ "qty","kit"]
-
-    def process_row_action_delete_item(self, request, obj):
-        obj.delete()
-        success = True
-        response = {
-            "message": "Successfully deleted Item",
-        }
-        return success, response
-        
     
     def kit_getval(self, obj):
         if obj.kit:
@@ -317,6 +300,9 @@ class OrderTable(ModelTable):
             return Q(order_date__contains=search_term)
         return Q()
     
+        
+    
+
 class SchoolOrderTable(OrderTable):
     id = ModelCol(display_as="Order ID", searchable=True, sortable=True)
     school = ModelCol(display_as="School", searchable=True, sortable=True)
