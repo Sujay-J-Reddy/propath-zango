@@ -18,6 +18,7 @@ class FranchiseeTable(ModelTable):
     locations = ModelCol(display_as="Locations", sortable=True, searchable=True)
     country = ModelCol(display_as="Country", sortable=True, searchable=True)
     email = ModelCol(display_as="Mail", sortable=True, searchable=True)
+    active = ModelCol(display_as="Status", sortable=True)
     table_actions = []
     row_actions = [
         {
@@ -29,6 +30,14 @@ class FranchiseeTable(ModelTable):
             "roles": [
                 "Admin"
             ],  # Specify roles that can perform the action
+        },
+        {
+            "name": "Activate/Deactive",
+            "key": "deactivate_franchise",
+            "description": "Activate/Deactivate Franchisee",
+            "type": "simple",
+            "confirmation_message": "Are you sure?",
+            "roles": ["Admin"]
         }
     ]
 
@@ -45,10 +54,20 @@ class FranchiseeTable(ModelTable):
         card_primary_fields = [ "email","contact_number"]
 
 
-    def can_perform_row_action_edit(self, request, obj):
-        # Implement logic to check if the user can perform the Edit action
-        # Example: Check if the user has the necessary permissions to edit records
-        return True
+    def active_getval(self, obj):
+        return "Active" if obj.active else "Inactive"
+    
+    def process_row_action_deactivate_franchise(self, request, obj):
+        obj.active = not obj.active
+        obj.save()
+        success = True
+        
+        response = {
+            "message": "Marked as " + ("Active" if obj.active else "Inactive")
+        }
+        
+        return success, response
+        
     
     
     
@@ -215,7 +234,16 @@ class LevelCertificateTable(ModelTable):
     level = ModelCol(display_as="Level", searchable=True, sortable=True)
     date = ModelCol(display_="Date", searchable=True, sortable=True)
     table_actions=[]
-    row_actions = []
+    row_actions = [
+        {
+            "name": "Delete",
+            "key": "delete_certificate",
+            "description": "Delete Certificate",
+            "type": "simple",
+            "confirmation_message": "Are you sure you want to delete this Certificate?",
+            "roles": ["Admin"]
+        }
+    ]
 
     class Meta:
         model = LevelCertificate
@@ -228,6 +256,14 @@ class LevelCertificateTable(ModelTable):
             'date'
         ]
         card_primary_fields = [ "course", "programme", "level"]
+
+    def process_row_action_delete_certificate(self, request, obj):
+        obj.delete()
+        success = True
+        response = {
+            "message": "Successfully deleted Certificate",
+        }
+        return success, response
 
     def id_Q_obj(self, search_term):
         try:

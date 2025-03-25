@@ -53,6 +53,7 @@ class Franchisee(DynamicModelBase):
     experience_in_franchisee_model = models.PositiveIntegerField()
     find_about_us = models.CharField(max_length=20, choices=FIND_US_CHOICES)
     user = ZOneToOneField(AppUserModel, on_delete=models.CASCADE)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
@@ -101,7 +102,7 @@ class LevelCertificate(DynamicModelBase):
     programme = models.CharField(max_length=100)
     level = models.CharField(max_length=100)
     date = models.DateField(auto_now_add=True)
-
+    
     def __str__(self):
         return f"{self.student.s_id} - {self.student.name}"
 

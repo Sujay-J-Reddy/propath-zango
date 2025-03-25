@@ -14,6 +14,7 @@ class School(DynamicModelBase):
     contact = models.CharField(max_length=100)
     mail = models.EmailField(max_length=100)
     location = models.CharField(max_length=100)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
@@ -35,6 +36,7 @@ class Competition(DynamicModelBase):
     name = models.CharField(max_length=100)
     level_cutoff_date = models.DateField()
     pdf_file = ZFileField()
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.circular_no} - {self.name}"

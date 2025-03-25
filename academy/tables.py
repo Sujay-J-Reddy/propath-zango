@@ -139,6 +139,7 @@ class CompetitionTable(ModelTable):
     name = ModelCol(display_as="Name", sortable=True, searchable=True)
     level_cutoff_date = ModelCol(display_as="Level Cut off Date", sortable=True, searchable=True)
     pdf_file = ModelCol(display_as="PDF File", sortable=False, searchable=False)
+    active = ModelCol(display_as="Status", sortable=True)
     table_actions = []
     row_actions = [
         {
@@ -160,6 +161,14 @@ class CompetitionTable(ModelTable):
             "roles": [
                 "Franchisee"
             ],  # Specify roles that can perform the action
+        },
+        {
+            "name": "Activate/Deactivate",
+            "key": "deactivate_competition",
+            "description": "Activate/Deactivate Competition",
+            "type": "simple",
+            "confirmation_message": "Are you sure?",
+            "roles": ["Admin"]
         }
     ]
 
@@ -171,6 +180,7 @@ class CompetitionTable(ModelTable):
             "name",
             "level_cutoff_date",
             "pdf_file",
+            "active"
         ]
         # row_selector = {"enabled": True, "multi": False}
         card_primary_fields = ["level_cutoff_date"]
@@ -189,6 +199,16 @@ class CompetitionTable(ModelTable):
         if search_term is not None:
             return Q(name__contains=search_term)
         return Q()
+    
+    def active_getval(self, obj):
+        return "Active" if obj.active else "Inactive"
+    
+    def process_row_action_deactivate_competition(self, request, obj):
+        obj.active = not obj.active
+        obj.save()
+        success = True
+        response = {"message": "Marked as " + ("Active" if obj.active else "Inactive")}
+        return success, response
 
 class CompetitionResultTable(ModelTable):
     competition = ModelCol(display_as="Competition", sortable=True, searchable=True)
@@ -200,13 +220,21 @@ class CompetitionResultTable(ModelTable):
     row_actions = [
         {
             "name": "Edit",
-            "key": "edit",
+            "key": "edit_result",
             "description": "Edit Competition Results",
             "type": "form",
             "form": CompetitionResultForm,  # Specify the form to use for editing
             "roles": [
                 "Admin"
             ],  # Specify roles that can perform the action
+        },
+        {
+            "name": "Delete",
+            "key": "delete_result",
+            "description": "Delete Competition Results",
+            "type": "simple",
+            "confirmation_message": "Are you sure you want to delete this Competition Result?",
+            "roles": ["Admin"]
         }
     ]
 
@@ -220,6 +248,14 @@ class CompetitionResultTable(ModelTable):
         ]
         # row_selector = {"enabled": True, "multi": False}
         card_primary_fields = ["competition","rank"]
+
+    def process_row_action_delete_result(self, request, obj):
+        obj.delete()
+        success = True
+        response = {
+            "message": "Successfully deleted Competition Result",
+        }
+        return success, response
     
     def competition_getval(self, obj):
         return f"{obj.competition.circular_no} - {obj.competition.name}"
@@ -299,6 +335,7 @@ class SchoolTable(ModelTable):
     contact = ModelCol(display_as="Contact", searchable=True, sortable=True)
     mail = ModelCol(display_as="Mail", searchable=True, sortable=True)
     location = ModelCol(display_as="Location", searchable=True, sortable=True)
+    active = ModelCol(display_as="Status", sortable=True)
     table_actions = []
     row_actions =[
         {
@@ -310,6 +347,14 @@ class SchoolTable(ModelTable):
             "roles": [
                 "Admin"
             ],  # Specify roles that can perform the action
+        },
+        {
+            "name": "Activate/Deactivate",
+            "key": "deactivate_school",
+            "description": "Activate/Deactivate School",
+            "type": "simple",
+            "confirmation_message": "Are you sure?",
+            "roles": ["Admin"]
         }
         
     ]
@@ -321,13 +366,33 @@ class SchoolTable(ModelTable):
             "name",
             "contact",
             "mail",
-            "location"
+            "location",
+            "active"
         ]
         card_primary_fields = ["contact", "mail"]
+
+    def active_getval(self, obj):
+        return "Active" if obj.active else "Inactive"
+
+    def process_row_action_deactivate_school(self, request, obj):
+         obj.active = not obj.active
+         obj.save()
+         success = True
+         
+         response = {
+             "message": "Marked as " + ("Active" if obj.active else "Inactive")
+         }
+         
+         return success, response
 
     def name_Q_obj(self, search_term):
         if search_term is not None:
             return Q(name__contains=search_term)
+        return Q()
+    
+    def status_Q_obj(self, search_term):
+        if search_term is not None:
+            return Q(active=search_term)
         return Q()
 
     def contact_Q_obj(self, search_term):

@@ -11,6 +11,7 @@ from ..franchise.utils import get_current_franchise
 
 class KitTable(ModelTable):
     name = ModelCol(display_as="Kit Name", sortable=True, searchable=True)
+    active =  ModelCol(display_as = "Status", sortable=True)
     table_actions = []
     row_actions = [
         {
@@ -24,32 +25,40 @@ class KitTable(ModelTable):
             ],  # Specify roles that can perform the action
         },
         {
-            "name": "Delete",
-            "key": "delete_kit",
-            "description": "Delete Kit",
+            "name": "Activate/Deactivate",
+            "key": "deactivate_kit",
+            "description": "Activate/Deactivate Kit",
             "type": "simple",
-            "confirmation_message": "Are you sure you want to delete this Kit?",
+            "confirmation_message": "Are you sure?",
             "roles": ["Admin"]
-        }
+        },
     ]
 
     class Meta:
         model = Kit
         detail_class = KitDetail
-        fields = ["name"]
+        fields = [
+                    "name",
+                    "active"
+                 ]
         card_primary_fields = ["name"]
+
+    def active_getval(self, obj):
+        return "Active" if obj.active else "Inactive"
 
     def name_Q_obj(self, search_term):
         if search_term is not None:
             return Q(name__contains=search_term)
         return Q()  
     
-    def process_row_action_delete_kit(self, request, obj):
-        obj.delete()
+    def process_row_action_deactivate_kit(self, request, obj):
+        obj.active = not obj.active 
+        obj.save()
         success = True
         response = {
-            "message": "Successfully deleted Kit",
+            "message": "Marked as " + ("Active" if obj.active else "Inactive")
         }
+
         return success, response
 
 
@@ -58,6 +67,7 @@ class VendorTable(ModelTable):
     name = ModelCol(display_as="Vendor Name", searchable=True, sortable=True)
     contact = ModelCol(display_as="Contact", searchable=True, sortable=True)
     location = ModelCol(display_as="Location", searchable=True ,sortable=True)
+    active = ModelCol(display_as="Status", sortable=True)
     table_actions = []
     row_actions =[
         {
@@ -71,11 +81,11 @@ class VendorTable(ModelTable):
             ],  # Specify roles that can perform the action
         },
         {
-            "name": "Delete",
-            "key": "delete_vendor",
-            "description": "Delete Vendor",
+            "name": "Activate/Deactivate",
+            "key": "deactivate_vendor",
+            "description": "Activate/Deactivate Vendor",
             "type": "simple",
-            "confirmation_message": "Are you sure you want to delete this Vendor?",
+            "confirmation_message": "Are you sure?",
             "roles": ["Admin"]
         }
     ]
@@ -89,6 +99,9 @@ class VendorTable(ModelTable):
         ]
         card_primary_fields = [ "contact","location"]
 
+    def active_getval(self, obj):
+        return "Active" if obj.active else "Inactive"
+
     def id_Q_obj(self, search_term):
         try:
             modified_id = int(search_term) 
@@ -98,12 +111,11 @@ class VendorTable(ModelTable):
             return Q(id=modified_id)
         return Q()
     
-    def process_row_action_delete_vendor(self, request, obj):
-        obj.delete()
+    def process_row_action_deactivate_vendor(self, request, obj):
+        obj.active = not obj.active
+        obj.save()
         success = True
-        response = {
-            "message": "Successfully deleted Vendor",
-        }
+        response = {"message": "Marked as " + ("Active" if obj.active else "Inactive")}
         return success, response
 
 class ItemTable(ModelTable):

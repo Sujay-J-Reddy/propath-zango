@@ -53,6 +53,7 @@ class Teacher(DynamicModelBase):
     how_did_you_come_to_know_us = models.CharField(max_length=20, choices=SOURCE_CHOICES)
     date = models.DateField(auto_now_add=True)
     user = ZOneToOneField(AppUserModel, on_delete=models.CASCADE)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

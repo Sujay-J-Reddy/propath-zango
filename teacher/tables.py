@@ -22,6 +22,7 @@ class TeacherTable(ModelTable):
     state = ModelCol(display_as="State", sortable=True, searchable=True)
     contact_no = ModelCol(display_as="Contact Number", sortable=True, searchable=True)
     email = ModelCol(display_as="Email", sortable=True, searchable=True)
+    active = ModelCol(display_as="Status", sortable=True)
     table_actions =[]
     row_actions = [
         {
@@ -43,6 +44,14 @@ class TeacherTable(ModelTable):
             "roles": [
                 "Admin",
             ],  
+        },
+        {
+            "name": "Activate/Deactivate",
+            "key": "deactivate_teacher",
+            "description": "Activate/Deactivate Teacher",
+            "type": "simple",
+            "confirmation_message": "Are you sure?",
+            "roles": ["Admin"]
         }
     ]
 
@@ -63,8 +72,19 @@ class TeacherTable(ModelTable):
             "state",
             "contact_no",
             "email",
+            "active"
         ]
         card_primary_fields = [ "program_name", "franchise", "program_name"]
+
+    def active_getval(self, obj):
+        return "Active" if obj.active else "Inactive"
+
+    def process_row_action_deactivate_teacher(self, request, obj):
+        obj.active = not obj.active
+        obj.save()
+        success = True
+        response = {"message": "Marked as " + ("Active" if obj.active else "Inactive")}
+        return success, response
     
     def can_perform_row_action_edit(self, request, obj):
         # Implement logic to check if the user can perform the Edit action
@@ -163,7 +183,16 @@ class InstructorFeedbackTable(ModelTable):
     comments_suggestions = ModelCol(display_as = "Comments/Suggestions", searchable = True, sortable = True)
     date = ModelCol(display_as = "Date", searchable = True, sortable = True)
     table_actions = []
-    row_actions = []
+    row_actions = [
+        {
+            "name": "Delete",
+            "key": "delete_instructor_feedback",    
+            "description": "Delete Instructor Feedback",
+            "type": "simple",
+            "confirmation_message": "Are you sure you want to delete this Instructor Feedback?",
+            "roles": ["Admin"]
+        }
+    ]
 
     class Meta:
         model = InstructorFeedback
@@ -185,6 +214,14 @@ class InstructorFeedbackTable(ModelTable):
         ]
         card_primary_fields = ["date"]
 
+
+    def process_row_action_delete_instructor_feedback(self, request, obj):
+        obj.delete()
+        success = True
+        response = {
+            "message": "Successfully deleted Instructor Feedback",
+        }
+        return success, response
 
     def teacher_getval(self, obj):
         return obj.teacher.name
