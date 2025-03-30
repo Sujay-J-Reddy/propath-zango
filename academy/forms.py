@@ -63,6 +63,16 @@ class CompetitionResultForm(BaseForm):
             "rank"
         ]
 
+    def __init__(self, *args, **kwargs):
+        super(CompetitionResultForm, self).__init__(*args, **kwargs)
+        self.update = False
+        instance = kwargs.get("instance")
+
+        self.fields["competition"].queryset = Competition.objects.filter(active=True)
+
+        if instance is not None:
+            self.update = True
+
     def save(self, commit=True):
         instance = super().save(commit=False)
         franchise = instance.student.franchise
@@ -112,6 +122,16 @@ class SchoolStudentForm(BaseForm):
             "dob",
             "contact"
         ]
+
+    def __init__(self, *args, **kwargs):
+        super(SchoolStudentForm, self).__init__(*args, **kwargs)
+        self.update = False
+        instance = kwargs.get("instance")
+
+        self.fields["school"].queryset = School.objects.filter(active=True)
+
+        if instance is not None:
+            self.update = True
 
 class StatForm(BaseForm):
     students = ModelField(placeholder="Number of Students", required=False)

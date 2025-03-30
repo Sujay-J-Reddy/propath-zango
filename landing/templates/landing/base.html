@@ -143,5 +143,34 @@
     }
   }
 
+  document.addEventListener('DOMContentLoaded', function() {
+    const openModalButtons = document.querySelectorAll('.open-modal');
+    const closeModalButtons = document.querySelectorAll('.close');
+
+    // Open modal function
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const modalId = this.getAttribute('data-modal-target');
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden'); // Show the modal
+        });
+    });
+
+    // Close modal function
+    closeModalButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const modalId = this.getAttribute('data-modal-hide');
+            const modal = document.getElementById(modalId);
+            modal.classList.add('hidden'); // Hide the modal
+        });
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.classList.add('hidden'); // Hide the modal
+        }
+    });
+});
 
 </script>

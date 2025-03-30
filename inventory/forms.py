@@ -7,6 +7,7 @@ from ..packages.crud.form_fields import ModelField, CustomSchemaField
 from .models import Vendor, Item, Kit, Log, Order, SchoolOrder
 from ..notifications.models import Notification
 from ..franchise.models import Franchisee
+from ..academy.models import School
 from django import forms
 
 
@@ -54,7 +55,7 @@ class ItemForm(BaseForm):
 
     def __init__(self, *args, **kwargs):
         super(ItemForm, self).__init__(*args, **kwargs)
-        self.fields['kit'].choices=[(str(x.id), x.__str__()) for x in Kit.objects.all()]
+        self.fields['kit'].choices=[(str(x.id), x.__str__()) for x in Kit.objects.filter(active=True)]
 
 
 
@@ -120,6 +121,7 @@ class LogForm(BaseForm):
         super(LogForm, self).__init__(*args, **kwargs)
         instance = kwargs.get("instance")
         items = [str(item.pk) for item in  Item.objects.all()]
+        self.fields["vendor"].queryset = Vendor.objects.filter(active=True)
         self.custom_schema_fields["supply_items"].schema["items"]["properties"]["item"]["enum"] = items
         self.custom_schema_fields["supply_items"].schema["items"]["properties"]["item"]["enumNames"] = [obj.name for obj in Item.objects.all()]
         if instance is not None:
@@ -263,19 +265,19 @@ class OrderForm(BaseForm):
         choices = [(f"{loc['city']} - {loc['address']}", f"{loc['city']} - {loc['address']}") for loc in franchise.get_locations()]
         self.fields['location'].choices = choices
         items = [str(item.pk) for item in Item.objects.filter(kit=None)]
-        kits = [str(kit.pk) for kit in Kit.objects.all()]
+        kits = [str(kit.pk) for kit in Kit.objects.filter(active=True)]
         self.custom_schema_fields["order_items"].schema["items"]["properties"]["item"]["enum"] = items
         self.custom_schema_fields["order_items"].schema["items"]["properties"]["item"]["enumNames"] = [obj.name for obj in Item.objects.filter(kit=None)]
         self.custom_schema_fields["kits"].schema["items"]["properties"]["kit"]["enum"] = kits
-        self.custom_schema_fields["kits"].schema["items"]["properties"]["kit"]["enumNames"] = [obj.name for obj in Kit.objects.all()]
+        self.custom_schema_fields["kits"].schema["items"]["properties"]["kit"]["enumNames"] = [obj.name for obj in Kit.objects.filter(active=True)]
         if instance is not None:
             self.update = True
             items = Item.objects.filter(kit=None).values_list("id")
-            kits = Kit.objects.all().values_list("id")
+            kits = Kit.objects.filter(active=True).values_list("id")
             self.custom_schema_fields["order_items"].schema["items"]["properties"]["item"]["enum"] = items
         self.custom_schema_fields["order_items"].schema["items"]["properties"]["item"]["enumNames"] = [obj.name for obj in Item.objects.filter(kit=None)]
         self.custom_schema_fields["kits"].schema["items"]["properties"]["kit"]["enum"] = kits
-        self.custom_schema_fields["kits"].schema["items"]["properties"]["kit"]["enumNames"] = [obj.name for obj in Kit.objects.all()]
+        self.custom_schema_fields["kits"].schema["items"]["properties"]["kit"]["enumNames"] = [obj.name for obj in Kit.objects.filter(active=True)]
 
     def save(self, commit=True):
         instance = super().save(commit=False)
@@ -298,8 +300,103 @@ class OrderForm(BaseForm):
             )
         return instance
     
-class SchoolOrderForm(OrderForm):
+class SchoolOrderForm(BaseForm):
     school = ModelField(placeholder="School", required=True, required_msg="This field is required")
+    order_items = CustomSchemaField(
+        required=False,
+        schema={
+            "type": "array",
+            "title": "Items",
+            "items": {
+                "type": "object",
+                "required": [
+                    "item",
+                    "item_qty"
+                ],
+                "properties": {
+                    "item": {
+                        "type": "string",
+                        "title": "Item"
+                    },
+                    "item_qty": {
+                        "type": "string",
+                        "title": "Quantity",
+                        
+                    }
+                }
+            }
+        },
+        ui_schema={
+            "items": {
+                "item": {
+                    "ui:tooltip": "Item Name",
+                    "ui:classNames": "col-span-12 sm:col-span-6",
+                    "ui:widget": "select",
+                    "ui:placeholder": "Choose an Item",
+                    "ui:errorMessages": {
+                        "required": "This field is required."
+                    }
+                },
+                "item_qty": {
+                    "ui:tooltip": "Item Quantity",
+                    "ui:classNames": "col-span-12 sm:col-span-6",
+                    "ui:widget": "TextFieldWidget",
+                    "ui:placeholder": "Enter Item quantity",
+                    "ui:errorMessages": {
+                        "required": "This field is required."
+                    }
+                }
+            }
+        }
+    )
+
+    kits = CustomSchemaField(
+        required=False,
+        schema={
+            "type": "array",
+            "title": "Kits",
+            "items": {
+                "type": "object",
+                "required": [
+                    "kit",
+                    "kit_qty"
+                ],
+                "properties": {
+                    "kit": {
+                        "type": "string",
+                        "title": "Kit"
+                    },
+                    "kit_qty": {
+                        "type": "string",
+                        "title": "Quantity",
+                    
+                    }
+                }
+            }
+        },
+        ui_schema={
+            "items": {
+                "kit": {
+                    "ui:tooltip": "Kit Name",
+                    "ui:classNames": "col-span-12 sm:col-span-6",
+                    "ui:widget": "select",
+                    "ui:placeholder": "Choose a Kit",
+                    "ui:errorMessages": {
+                        "required": "This field is required."
+                    }
+                },
+                "kit_qty": {
+                    "ui:tooltip": "Kit Quantity",
+                    "ui:classNames": "col-span-12 sm:col-span-6",
+                    "ui:widget": "TextFieldWidget",
+                    "ui:placeholder": "Enter Kit quantity",
+                    "ui:errorMessages": {
+                        "required": "This field is required."
+                    }
+                }
+            }
+        }
+    )
 
     class Meta:
         model = SchoolOrder
@@ -309,3 +406,44 @@ class SchoolOrderForm(OrderForm):
             "order_items",
             "kits"
         ]
+
+    def __init__(self, *args, **kwargs):
+        super(SchoolOrderForm, self).__init__(*args, **kwargs)
+        self.update = False
+        instance = kwargs.get("instance")
+        
+        items = [str(item.pk) for item in Item.objects.filter(kit=None)]
+        kits = [str(kit.pk) for kit in Kit.objects.filter(active=True)]
+        
+        # Set up enums for items and kits
+        self.custom_schema_fields["order_items"].schema["items"]["properties"]["item"]["enum"] = items
+        self.custom_schema_fields["order_items"].schema["items"]["properties"]["item"]["enumNames"] = [obj.name for obj in Item.objects.filter(kit=None)]
+        self.custom_schema_fields["kits"].schema["items"]["properties"]["kit"]["enum"] = kits
+        self.custom_schema_fields["kits"].schema["items"]["properties"]["kit"]["enumNames"] = [obj.name for obj in Kit.objects.filter(active=True)]
+        
+        # Set up the school field
+        self.fields["school"].queryset = School.objects.filter(active=True)
+        
+        if instance is not None:
+            self.update = True
+            items = Item.objects.filter(kit=None).values_list("id")
+            kits = Kit.objects.filter(active=True).values_list("id")
+            self.custom_schema_fields["order_items"].schema["items"]["properties"]["item"]["enum"] = items
+            self.custom_schema_fields["order_items"].schema["items"]["properties"]["item"]["enumNames"] = [obj.name for obj in Item.objects.filter(kit=None)]
+            self.custom_schema_fields["kits"].schema["items"]["properties"]["kit"]["enum"] = kits
+            self.custom_schema_fields["kits"].schema["items"]["properties"]["kit"]["enumNames"] = [obj.name for obj in Kit.objects.filter(active=True)]
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        order_items = self.data.get("order_items")
+        kits = self.data.get("kits")
+        
+        if commit:
+            if order_items is None and kits is None:
+                return instance
+            
+            instance.items = order_items
+            instance.kits = kits
+            instance.save()
+            
+        return instance

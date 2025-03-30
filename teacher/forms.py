@@ -2,6 +2,7 @@ from ..packages.crud.forms import BaseForm
 from datetime import datetime, timedelta
 from ..packages.crud.form_fields import ModelField
 from .models import Teacher, InstructorFeedback
+from ..franchise.models import Franchisee
 from zango.apps.appauth.models import UserRoleModel
 from zango.apps.appauth.models import AppUserModel
 from zango.core.utils import get_current_request
@@ -54,6 +55,16 @@ class TeacherForm(BaseForm):
             "annual_income",
             "how_did_you_come_to_know_us"
         ]
+
+    def __init__(self, *args, **kwargs):
+        super(TeacherForm, self).__init__(*args, **kwargs)
+        self.update = False
+        instance = kwargs.get("instance")
+
+        self.fields["franchise"].queryset = Franchisee.objects.filter(active=True)
+
+        if instance is not None:
+            self.update = True
     
     def save(self, commit=True):
         instance = super(TeacherForm, self).save(commit=False)

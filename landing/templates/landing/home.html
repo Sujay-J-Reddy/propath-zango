@@ -1113,4 +1113,272 @@
     </div>
   </div>
 </section>
+<!-- 9th section ends here -->
+
+<!-- <main style="background: linear-gradient(to right, #a9dbfc, #4285d1);">
+
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="{% zstatic 'packages/styles/images/landing/hero1.jpg' %}" 
+                     class="d-block mx-lg-auto img-fluid rounded border" 
+                     alt="Abacus Image" width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
+                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
+                    <span class="title-span">Propath</span> Academy </br>
+                    <span class="h4 text-muted">Unlock Potential with Abacus and Vedic Math!</span>
+                </h1>
+        
+                <p class="lead1 p-3 rounded large mb-3">
+                    At Propath Academy, we inspire young minds with engaging after-school programs designed for children aged 6 to 14. Our Abacus and Vedic Maths classes develop critical thinking, problem-solving, and calculation skills while making learning fun!
+        
+                    Our specialized programs in Abacus, Vedic Math, and Handwriting are designed to cultivate essential skills that lay the foundation for academic excellence and personal growth.
+                </p>
+        
+                <a href="/enquire" class="btn-genius mt-3">
+                    Join Us Now!
+                </a>
+            </div>
+        </div>
+
+        <div class="courses-frame mt-5">
+            <div class="">
+                <h2 class="border-bottom pb-2 mb-4 bold">Courses</h2>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card h-100 shadow-sm d-flex flex-column">
+                            <img src="{% zstatic 'packages/styles/images/landing/hero1.jpg' %}" 
+                                 alt="Abacus Image" class="card-img-top border-bottom">
+                            <div class="card-body d-flex flex-column">
+                                <p class="card-text">
+                                    Discover the ancient tool of mental arithmetic. Our Abacus program helps children develop strong numerical skills and enhances their concentration and memory through fun and interactive learning techniques.
+                                </p>
+                                <div class="mt-auto">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="/courses" class="btn btn-sm btn-outline-primary">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm d-flex flex-column">
+                            <img src="{% zstatic 'packages/styles/images/landing/hero1.jpg' %}" 
+                                 alt="Vedic Math Image" class="card-img-top border-bottom">
+                            <div class="card-body d-flex flex-column">
+                                <p class="card-text">Unlock the secrets of Vedic mathematics and unleash your mathematical genius. Our Vedic Maths program offers innovative techniques for quick mental calculations, making math easy and enjoyable for learners of all ages.</p>
+                                <div class="mt-auto">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="/courses" class="btn btn-sm btn-outline-primary">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm d-flex flex-column">
+                            <img src="{% zstatic 'packages/styles/images/landing/hero1.jpg' %}" 
+                                 alt="Handwriting Image" class="card-img-top border-bottom">
+                            <div class="card-body d-flex flex-column">
+                                <p class="card-text">Our Handwriting program focuses on improving penmanship, letter formation, and overall legibility. Whether you're a child learning to write or an adult looking to refine your handwriting, we've got you covered.</p>
+                                <div class="mt-auto">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="/courses" class="btn btn-sm btn-outline-primary">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="pb-2 border-bottom bold">Events At Propath</h2>
+        <div class="bd-example m-0 border-0 ms-lg-4 ps-lg-5">
+
+
+            <div id="carouselExampleCaptions" class="carousel slide carousel-fade"  data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item  active">
+                        {% if event1.photo %}
+                        <img src="{{ event1.photo.url }}" class="d-block w-100 standard-carousel-image img-fluid"
+                            alt="Event Photo" height="60%" width="40%">
+                        {% else %}
+                        <img src="{{ default_photo_url }}" class="d-block w-100 standard-carousel-image img-fluid"
+                            alt="Event Photo" height="60%" width="40%">
+                        {% endif %}
+                        <div class="carousel-caption d-none d-md-block me-lg-5 bg-dark bg-opacity-50 rounded">
+                            <h5 class="carousel-title">{{event1.name}}</h5>
+                            <p class="carousel-details">{{event1.details}}</p>
+                            <p class="carousel-details">{{event1.date}}</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        {% if event2.photo %}
+                        <img src="{{ event2.photo.url }}" class="d-block w-100 standard-carousel-image img-fluid"
+                            alt="Event Photo" height="60%" width="40%">
+                        {% else %}
+                        <img src="{{ default_photo_url }}" class="d-block w-100 standard-carousel-image img-fluid"
+                            alt="Event Photo" height="60%" width="40%">
+                        {% endif %}
+                        <div class="carousel-caption d-none d-md-block me-lg-5 bg-dark bg-opacity-50 rounded">
+                            <h5 class="carousel-title">{{event2.name}}</h5>
+                            <p class="carousel-details">{{event2.details}}</p>
+                            <p class="carousel-details">{{event2.date}}</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        {% if event3.photo %}
+                        <img src="{{ event3.photo.url }}" class="d-block w-100 standard-carousel-image img-fluid"
+                            alt="Event Photo" height="60%" width="40%">
+                        {% else %}
+                        <img src="{{ default_photo_url }}" class="d-block w-100 standard-carousel-image img-fluid"
+                            alt="Event Photo" height="60%" width="40%">
+                        {% endif %}
+                        <div class="carousel-caption d-none d-md-block me-lg-5 bg-dark bg-opacity-50 rounded">
+                            <h5 class="carousel-title">{{event3.name}}</h5>
+                            <p class="carousel-details">{{event3.details}}</p>
+                            <p class="carousel-details">{{event3.date}}</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev black" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-secondary bg-dark bg-opacity-50" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next me-lg-5" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-secondary bg-dark bg-opacity-50" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+        </div>
+
+        <h2 class="pb-2 border-bottom mt-5 mb-4 bold">Our Numbers</h2>
+
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col">
+                <div class="card card-cover overflow-hidden text-bg-primary rounded-4 shadow-lg">
+                    <div class="d-flex flex-column h-100 p-4 text-white text-shadow-1">
+                        <h3 class="count-number display-4">{{numbers.students}}+</h3>
+                        <h2 class="count-category">Students</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-cover overflow-hidden text-bg-success rounded-4 shadow-lg">
+                    <div class="d-flex flex-column h-100 p-4 text-white text-shadow-1">
+                        <h3 class="count-number display-4">{{numbers.franchises}}+</h3>
+                        <h2 class="count-category">Franchises</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-cover overflow-hidden text-bg-info rounded-4 shadow-lg">
+                    <div class="d-flex flex-column h-100 p-4 text-white text-shadow-1">
+                        <h3 class="count-number display-4">{{numbers.teachers}}+</h3>
+                        <h2 class="count-category">Teachers</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-8 ">
+            <div class="container">
+              <div class="row border-bottom mb-5">
+                <div class="offset-xl-3 col-xl-6 col-md-12 ">
+                  <h2 class="bold">Testimonials</h2>
+            
+                </div>
+              </div>
+              
+            
+            
+              <div class="row">
+                <div class="col-md-6 col-12">
+                  <div class="card mb-6 mb-lg-0">
+                    <div class="card-body p-6">
+                      <span class=" mb-3 d-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-quote text-light-primary  "
+                        viewBox="0 0 16 16">
+                        <path
+                          d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
+                      </svg>
+               
+                      <p class="fs-3 text-dark fw-semibold">"{{testimonial1.quote}}"</p>
+               
+                      <div class="d-flex mt-4 align-items-center">
+                        <img src="../assets/images/avatar/avatar-1.jpg" alt="" class="avatar avatar-md rounded-circle">
+                        <div class="ms-2">
+                          <h5 class="text-primary mb-0">{{testimonial1.name}}</h5>
+                          <p class="mb-0 fs-6">{{testimonial1.designation}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-12">
+                  <div class="card">
+                    <div class="card-body p-6">
+            
+                      <span class=" mb-3 d-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-quote text-light-primary  "
+                        viewBox="0 0 16 16">
+                        <path
+                          d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
+                      </svg>
+                      </span>
+                      <p class="fs-3 text-dark fw-semibold">"{{testimonial2.quote}}"</p>
+                      <div class="d-flex mt-4 align-items-center">
+                        <img src="../assets/images/avatar/avatar-9.jpg" alt="" class="avatar avatar-md rounded-circle">
+                        <div class="ms-2">
+                          <h5 class="text-primary mb-0">{{testimonial2.name}}</h5>
+                          <p class="mb-0 fs-6">{{testimonial2.designation}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+                 </div>
+    </div>
+</main> -->
+
+<!-- <script>
+    function updateImageClass() {
+        var img = document.getElementById('eventPhoto');
+        if (window.innerWidth < 992) {  // Bootstrap's breakpoint for large devices
+            img.classList.add('img-fluid');
+        } else {
+            img.classList.remove('img-fluid');
+        }
+    }
+
+    // Initial check
+    updateImageClass();
+
+    // Update on window resize
+    window.addEventListener('resize', updateImageClass);
+</script> -->
+
 {% endblock %}
