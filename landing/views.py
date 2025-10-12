@@ -53,6 +53,10 @@ class LandingView(TemplateView):
         sample_testimonials = [
             Testimonial(name="Sample Testimonial 1", date=now().date() - timedelta(days=1), designation="Sample Designation 1", quote="Sample Quote 1"),
             Testimonial(name="Sample Testimonial 2", date=now().date() - timedelta(days=2), designation="Sample Designation 2", quote="Sample Quote 2"),
+            Testimonial(name="Sample Testimonial 3", date=now().date() - timedelta(days=1), designation="Sample Designation 3", quote="Sample Quote 3"),
+            Testimonial(name="Sample Testimonial 4", date=now().date() - timedelta(days=2), designation="Sample Designation 4", quote="Sample Quote 4"),
+            Testimonial(name="Sample Testimonial 5", date=now().date() - timedelta(days=1), designation="Sample Designation 5", quote="Sample Quote 5"),
+            Testimonial(name="Sample Testimonial 6", date=now().date() - timedelta(days=2), designation="Sample Designation 6", quote="Sample Quote 6"),
         ]
 
         actual_testimonials = list(testimonials_queryset)
@@ -80,6 +84,26 @@ class LandingView(TemplateView):
             context['testimonial2'] = actual_testimonials[1]
         except IndexError:
             context['testimonial2'] = sample_testimonials[1]
+
+        try:
+            context['testimonial3'] = actual_testimonials[2]
+        except IndexError:
+            context['testimonial3'] = sample_testimonials[2]
+
+        try:
+            context['testimonial4'] = actual_testimonials[3]
+        except IndexError:
+            context['testimonial4'] = sample_testimonials[3]
+
+        try:
+            context['testimonial5'] = actual_testimonials[4]
+        except IndexError:
+            context['testimonial5'] = sample_testimonials[4]
+
+        try:
+            context['testimonial6'] = actual_testimonials[5]
+        except IndexError:
+            context['testimonial6'] = sample_testimonials[5]
 
 
         return context
